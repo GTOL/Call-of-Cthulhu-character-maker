@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GT's CoC Character Maker</title>
+        <meta charset="utf-8">
+        <style>
+		    div#frame {
+		    	width: 900px;
+        		margin-left: auto;
+        		margin-right: auto;
+
+        	}
+        	table, th, td {
+            	border: 1px solid black;
+            	border-collapse: collapse;
+            }
+            h2 {
+            	margin: 0.3em 0;
+            }
+            .holder {
+                border: 1px solid #666;
+                background-color: ; 
+                padding: 10px;
+                position: relative;
+                width: 428px;
+            }
+            #info-holder {
+                height: 228px;
+            	/*float: left;*/
+            	position: relative;
+            	left: 0;
+            	top: 0;
+            	font-size: 24px;
+            	text-align: center;
+            }
+            #info-holder input[type=text] {
+            	font-size: 22px;
+            }
+            #photo-holder {
+				width: 148px;
+				height: 228px;
+				float: left;
+			/*	background-image: url('ddwe.bmp');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: ; */
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+
+            }
+            .stat-holder {
+            	width: 118px;
+            	height: 228px;
+            	float: left;
+            }
+            .stat-holder input[type=text] {
+            	width: 24px;
+            	text-align: center;
+            }
+            .stat-holder p {
+            	height: 15px;
+            }
+            .stat-holder input[type=checkbox] {
+            	float: right;
+            }
+
+            #attr-holder {
+            	height: 478px;
+            	float: left;
+            	text-align: center;
+            }
+            #attr-holder table  {
+            	margin: 0 auto;
+            	font-size: 17px;
+            	line-height: 18px;
+            }
+            #attr-holder th {
+            	border: none;
+            }
+            #attr-holder td{
+            	height: 18px;
+            	width: 65px;
+            	padding: 0;
+/*            	text-align: center;*/
+            }
+            #attr-holder td.attr-final {
+            	font-size: 22px;
+            }
+            #attr-holder input[type=text] {
+            	border: none;
+            	width: 100%;
+            	height: 100%;
+            	text-align: center;
+            	font-size: 22px;
+            }
+            #skill-holder {
+            	float: left;
+            	height: 478px;
+            	background-color: pink;
+            }
+            #skill-holder select {
+            	width: 318px;
+            	font-size: 16px;
+            }
+            #skill-holder select option {
+            	text-align: center;
+            }
+            #skill-holder .skilldivs {
+            	overflow: auto;
+            	height: 300px;
+            	padding-bottom: 2px;
+            }
+            #skill-holder table {
+            	font-size: 16px;
+            	text-align: center;
+            	background-color: white;
+            }
+            #skill-holder td.skill-hard, td.skill-crit {
+            	font-size: 12px;
+            }
+            #skill-holder td {
+            	padding: 0px;
+            	height: 16px;
+            	
+            }
+            #skill-holder input[type=text] {
+            	font-size: 16px;
+            	border: none;
+            	width: 40px;
+            	height: 100%;
+            	text-align: center;
+            }
+            #skill-holder td.skill-name input[type=text] {
+            	width: 100px;
+            }
+            #gear-holder {
+            	float: left;
+            	height: 478px;
+            }
+            #gear-holder textarea {
+            	font-size: 20px;
+            }
+            #weapon-holder {
+            	float: left;
+            	width: 678px;
+            	height: 228px;
+            }
+            #weapon-holder td {
+            	padding: 0;
+            	height: 25px;
+            }
+            #weapon-holder input[type=text] {
+	        	border: none;
+            	width: 100%;
+            	height: 100%;
+            	font-size: 16px;
+            }
+            #fight-holder {
+            	float: left;
+            	width: 178px;
+            	height: 228px;
+            }
+
+
+
+            #relation-holder input[type=text] {
+            	font-size: 14px;
+            	border: none;
+            	width: 150px;
+            	height: 100%;
+            	text-align: center;
+            }
+            #back-to-top {
+            	/*background-image: url(ddwe.bmp);*/
+            	background-color: red;
+            	background-attachment: fixed;
+            	background-repeat: no-repeat;
+            }
+
+        /*最上方导航条的CSS*/
+
+			.topbody{
+			    width:900px;
+			    margin: 0 auto;
+			}
+			.topbar{
+			    width:100%;
+			    height:60px;
+			    background-color: #483D8B;  /*导航栏背景色*/
+			    display: inline-block;
+			}
+
+			.topbar li{
+			    float:left;
+			}
+			.toplist{
+			    display: inline-block;
+			    list-style-type:none;
+			}
+			.toplist a{
+			    color:#FFF;
+			    text-decoration: none;
+			}
+			.title,.toplist a{
+			    display:block;
+			    float: left;
+			}
+			.toplist a{
+			    padding: 10px;
+			    padding-right: 30px;
+			    background-color: #6A5ACD
+			}
+			.toplist：
+			a:hover   {color:red;}
+			a:active  {color:yellow;}
+
+			/*.toplist：a:hover,a：active{     为啥不变？？？
+			    padding: 10px;
+			    padding-right: 30px;
+			    background-color: #DDA0DD
+			    transform:scale(1.2);
+			}   */
+			.title{
+			    color:#FFF;
+			    text-decoration: none;
+			    padding:15px 30px 15px 30px;
+			}
+        </style>
+    </head>
+
+
+    <body>
+		<div class="topbar">
+		    <div class="topbody">
+		    <a class="title" href="">一个好用的COC在线卡片</a>
+		    <ul class="toplist">
+		        <li><a href="">▽人物卡</a></li>
+		        <li><a href="">▽帮助速查</a></li>
+		        <li><a href="">▽笔记本</a></li>
+		        <li><a href="">▽项目4</a></li>
+		    </ul>
+		    </div>
+		</div>
+
+		<!-- 这个是用来规范网页形状的 -->
+		<div id="frame">
+			<div style="float: left;">
+				<!-- 基本资料 -->
+				<div class="holder" id="info-holder">
+					<div>
+						姓&emsp;名：<input type="text" name="name" placeholder="李小花"><br>
+						玩&emsp;家：<input type="text" name="player" placeholder="克里斯"><br>
+						职&emsp;业：<input type="text" name="occupation" placeholder="教练"><br>
+						年&emsp;龄：<input style="width: 93px;" type="text" name="age" placeholder="20"> 性别：<input style="width: 93px;" type="text" name="gender" placeholder="女"><br>
+						出生地：<input type="text" name="birthplace"><br>
+						现居地：<input type="text" name="residence">
+					</div>
+				</div>
+				<!-- 状态以及形象 -->
+				<!-- 包含 hp mp san luck mov 受伤 疯狂 -->
+				<!-- 另开一个战斗：闪避 db build -->
+				<!-- 战斗放在武器速查旁边 -->
+				<div class="holder stat-holder">
+					<p id="max-hp">HP: <input type="text" name="current-hp" maxlength="2"> / 00</p>
+					<p id="max-mp">MP: <input type="text" name="current-mp" maxlength="2"> / 00</p>
+					<p id="max-san">San: <input type="text" name="current-san" maxlength="2"> / 00</p>
+					<p id="max-luck">Luck: <input type="text" name="current-luck" maxlength="2"> / 00</p>
+					<p>神话相信者<input type="checkbox" name="believer"></p>
+				</div>
+				<div class="holder" id="photo-holder">	
+					<div style="text-align: center;">
+						<img style="max-width: 95%; max-height: 170px;  height: auto;" src="bird.gif" >
+						<input type="file" accept="image/*" name="photo">
+					</div>
+				</div>
+				<div class="holder stat-holder">
+					<p>健康状态：<select name="healthy-stat">
+						<option value="healthy">健康</option>
+						<option value="major-wound">重伤</option>
+						<option value="lost-con">失去意识</option>
+						<option value="death">死亡</option></select>
+					</p>
+					<p></p>
+					<p>临时疯狂：<input type="checkbox" name="temp-insame"></p>
+					<p>不定期疯狂：<input type="checkbox" name="indef-insame"></p>
+					<!-- 此行应有特效 -->
+					<p>永久疯狂：<input type="checkbox" name="forever-insame"></p>
+					<p id=mov style="position: absolute; bottom: 0px;">机动力：0</p>
+				</div>
+			</div>
+		    <!-- 属性 -->
+			<div class="holder" id="attr-holder">
+				<h2>调查员属性</h2>
+				<p>
+					<table style="border: none;">
+						<tr>
+							<th rowspan="2">名称</th>
+							<th rowspan="2">初始</th>
+							<th rowspan="2">修改</th>
+							<th rowspan="2">最终值</th>
+							<th style="font-size: 13px;">困难成功</th></tr><tr><th style="font-size: 13px;">极限成功</th>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">力量<br>STR</td>
+							<td rowspan="2"><input type="text" name="str" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="str-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">敏捷<br>DEX</td>
+							<td rowspan="2"><input type="text" name="dex" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="dex-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">智力<br>INT</td>
+							<td rowspan="2"><input type="text" name="int" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="int-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">体质<br>CON</td>
+							<td rowspan="2"><input type="text" name="con" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="con-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">外貌<br>APP</td>
+							<td rowspan="2"><input type="text" name="app" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="app-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">意志<br>POW</td>
+							<td rowspan="2"><input type="text" name="pow" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="pow-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">体型<br>SIZ</td>
+							<td rowspan="2" style="font-size: 22px;">num</td>
+							<td rowspan="2"><input type="text" name="siz-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="border: none;">教育<br>EDU</td>
+							<td rowspan="2"><input type="text" name="edu" placeholder="00"></td>
+							<td rowspan="2"><input type="text" name="edu-modi"></td>
+							<td rowspan="2" class="attr-final">00</td>
+							<td>00</td></tr><tr><td>00</td>
+						</tr>
+					</table>
+				</p>
+				<div style="position: absolute; bottom: 10px; right: 10px;">年龄调整<input type="checkbox" name="age-modifier"></div>
+			</div>
+			<!-- 技能 -->
+			<div class="holder" id="skill-holder">
+				<h2>技能</h2>
+				<!-- 职业点数、兴趣点数 -->
+				<!-- 技能列表 -->
+
+				<!-- 放到同一行 -->
+				<!-- 技能input默认值和输入值高度不同 -->
+				<p>职业点数：<span>00</span> / <span>00</span></p>
+				<p>兴趣点数：<span>00</span> / <span>00</span></p>
+				<script src="skills.js"></script>
+				<script>
+					var skills = [
+						[0,	"艺术与手艺(05%)", 		00],
+						[1,	"演技", 			05],
+						[1,	"美术", 			05],
+						[1,	"伪造", 			05],
+						[1,	"摄影",				05],
+						[2,	"其他",				05],
+						[2,	"其他",				05],
+
+						[0,	"语言(01%)",			00],
+						[2,	"母语",				-2],
+						[2,	"其他", 			01],
+						[2,	"其他",				01],
+						[2,	"其他",				01],
+
+						[0,	"科学(01%)",			01],
+						[1,	"数学",				10],
+						[1,	"化学",				01],
+						[1,	"物理学",			01],
+						[1,	"生物学",			01],
+						[1,	"动物学",			01],
+						[1,	"植物学",			01],
+						[1,	"工程学",			01],
+						[1,	"密码学",			01],
+						[1,	"法医学",			01],
+						[1,	"天文学",			01],
+						[1,	"气象学",			01],
+						[1,	"药物学",			01],
+
+						[0,	"知识",					00],
+						[1,	"急救",				30],
+						[1,	"医学",				01],
+						[1,	"历史",				05],
+						[1,	"法律",				05],
+						[1,	"会计",				05],
+						[1,	"乔装",				05],
+						[1,	"考古学",			01],
+						[1,	"神秘学",			05],
+						[1,	"电器维修",			10],
+						[1,	"机械维修",			10],
+						[1,	"自然知识",			10],
+						[1,	"计算机使用",		05],
+						[1,	"电子学",			01],
+						[1,	"动物驯养*",		05],
+						[2,	"其他知识",			01],
+						[2,	"其他知识",			01],
+						[2,	"其他知识",			01],
+
+
+						[0,	"战斗",					00],
+						[1,	"斗殴",				25],
+						[1,	"斧子",				15],
+						[1,	"电锯",				10],
+						[1,	"连枷",				10],
+						[1,	"绞杀",				15],
+						[1,	"矛",				20],
+						[1,	"剑",				20],
+						[1,	"鞭",				05],
+						[2,	"其他",				-1],
+						[2,	"其他",				-1],
+						[2,	"其他",				-1],
+
+						[0,	"枪械",					00],
+						[1,	"弓",				15],
+						[1,	"手枪",				20],
+						[1,	"冲锋枪",			15],
+						[1,	"步枪/霰弹枪",		25],
+						[1,	"机枪",				10],
+						[1,	"火焰喷射器",		10],
+						[1,	"重武器",			10],
+						[1,	"火炮*",			01],
+						[1,	"爆破*",			01],
+						[2,	"其他武器*",		01],
+
+						[0,	"动作",					00],
+						[1,	"闪避",				-2],
+						[1,	"攀爬",				20],
+						[1,	"跳跃",				20],
+						[1,	"游泳",				20],
+						[1,	"潜水*",				01],
+						[1,	"投掷",				20],
+						[1,	"潜行",				20],
+						
+						[0,	"交流",					00],
+						[1,	"魅惑",				15],
+						[1,	"威胁",				15],
+						[1,	"劝说",				10],
+						[1,	"话术",				05],
+						[1,	"心理学",			10],
+						[1,	"人类学",			01],
+						[1,	"心理分析治疗",		01],
+						[1,	"唇语*",			01],
+						[1,	"催眠*",			01],
+						
+
+						[0,	"交互（环境）",			00],
+						[1,	"跟踪/追踪",		10],
+						[1,	"侦查",				25],
+						[1,	"聆听",				20],
+						[1,	"领航",				10],
+						[1,	"图书馆使用",		15],
+						[2,	"野外生存",			10],
+
+						[0,	"交互（物品）",			00],
+						[1,	"开锁",				01],
+						[1,	"鉴定",				05],
+						[1,	"巧手",				10],
+						[1,	"骑术",				05],
+						[1,	"机动车驾驶",		20],
+						[1,	"操作重型机械",		01],
+						[2,	"特殊驾驶",			01],
+						[2,	"特殊驾驶",			01],
+						[2,	"特殊驾驶",			01],
+						
+
+						[0,	"其他",					00],
+						[1,	"信用等级",			-2],
+						[1,	"克苏鲁神话",		00],
+						[2,	"特殊学问",			01],
+						[2,	"特殊学问",			01],
+					];
+					skillsMain(skills, "skill-holder");
+					
+					// skillTable(data)
+				</script>
+			</div>
+			<!-- 装备与持有物 -->
+			<div class="holder" id="gear-holder">
+				<h2>装备与持有物</h2>
+				<p>
+					<textarea rows="15" cols="40" style="resize:none;" placeholder="请输入内容..."></textarea>
+				</p>
+			</div>
+			<!-- 武器 -->
+			<div class="holder" id="weapon-holder">
+				<div style="float: left; width: 40px;"><h2>武器速查</h2></div>
+				<p>
+					<table>
+						<tr>
+							<th rowspan="2" width="140">名称</th>
+							<th rowspan="2" width="100">类型</th>
+							<th rowspan="1" colspan="3" width="190">判定值（自动计算）</th>
+							<th rowspan="2">伤害</th>
+							<th rowspan="2">射程</th>
+							<th rowspan="2">次数</th>
+							<th rowspan="2">弹药</th>
+							<th rowspan="2">故障值</th>
+						</tr>
+						<tr>
+							<th width="50">一般</th>
+							<th width="50">困难</th>
+							<th width="50">极限</th>
+						</tr>
+						<tr>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+						</tr>
+						<tr>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+						</tr>
+						<tr>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+						</tr>
+						<tr>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+						</tr>
+						<tr>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+						</tr>
+						<tr>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+							<td><input type="text" name=""></td>
+						</tr>
+					</table>
+				</p>
+			</div>
+			<!-- 战斗 -->
+			<div class="holder" id="fight-holder">
+				<h2>战斗</h2>
+				<p>伤害加成(DB) <span>00</span></p>
+				<p>体格(Build) <span>00</span></p>
+				<p>闪避 <span>00</span></p>
+			</div>
+			<!-- copied -->
+			<!-- 按照我的理解这些放在后面一些的地方比较好因为真的不常用 -->
+			<!-- 实现文本框水平行线 -->
+			<div id="background" style="width: 1150px;">
+		   		<div class="holder" id="back-holder" align="left" style="width: 400px;height: 740px;border: 1px solid #666;background-color: ;float: left;">
+		   		    <div style="text-align: center";>
+			       	<h2>调查员资料</h2>
+			       	</div>
+		   			<div style="padding:10px">
+		       		个人描述：<textarea rows="6" cols="50" style="resize:none" placeholder="请输入内容..."></textarea><br>
+		       		思想信念：<textarea rows="2" cols="50" style="resize:none"></textarea><br>
+		       		重要之人：<textarea rows="1" cols="50" style="resize:none"></textarea><br>
+		       		宝贵之物：<textarea rows="1" cols="50" style="resize:none"></textarea><br>
+		       		意义非凡之地：<textarea rows="1" cols="50" style="resize:none"></textarea><br>
+		       		人物特点：<textarea rows="3" cols="50" style="resize:none"></textarea><br>
+		       		创伤与伤疤 : <textarea rows="2" cols="50" style="resize:none"></textarea><br>
+		       		恐惧与狂热 : <textarea rows="2" cols="50" style="resize:none"></textarea><br>
+		       		魔法书与咒文:<textarea rows="2" cols="50" style="resize:none"></textarea><br>
+		       		第三类接触 : <textarea rows="3" cols="50" style="resize:none"></textarea>
+		       		</div>
+		       	</div>
+		   		<div class="holder" id="possessions-holder" style="width: 400px; height: 400px;border: 1px solid ;float: left;padding:10px">
+		   			<div style="text-align: center";><h2>调查员资产</h2>
+		   			</div>
+		       		
+		       		<div id="cash-holder" style="width: 350px;height: 300px; border: 0px solid #666;background-color: ;float: left;padding:10px" >
+			       		<h3 style="text-align: center">现金与资产</h3>
+			       		<div style="padding:10px">
+			       		现金：<input type="text" name="cash" style="width:100px" ><br>
+			       		调查员生活水平：<textarea rows="3" cols="40" style="resize:none"></textarea><br>
+			       		其他资产：<textarea rows="5" cols="40" style="resize:none"></textarea>
+			       		</div>
+		       		</div>
+		   		</div>
+			</div>
+
+
+			<!-- 人物关系 -->
+			<div class="holder" id=relation-holder style="width: 530px;height: 400px; float:left">
+				<h2 style="text-align: center">调查员人际关系</h2>
+				<table border="3" cellpadding="10" border="1">
+				    <tr>
+				        <th>关系</th>
+				        <th>角色</th>
+				        <th>玩家</th>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" name="relative1" placeholder="兄妹，心有灵犀"></td>
+				        <td class="character"><input type="text" name="character1" placeholder="李大刚"></td>
+				        <td class="player"><input type="text" name="player1" placeholder="葫芦小金刚"></td>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" ></td>
+				        <td class="character"><input type="text"></td>
+				        <td class="player"><input type="text"> </td>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" ></td>
+				        <td class="character"><input type="text"></td>
+				        <td class="player"><input type="text"> </td>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" ></td>
+				        <td class="character"><input type="text"></td>
+				        <td class="player"><input type="text"> </td>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" ></td>
+				        <td class="character"><input type="text"></td>
+				        <td class="player"><input type="text"> </td>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" ></td>
+				        <td class="character"><input type="text"></td>
+				        <td class="player"><input type="text"> </td>
+				    </tr>
+				    <tr>
+				        <td class="relative"><input type="text" ></td>
+				        <td class="character"><input type="text"></td>
+				        <td class="player"><input type="text"> </td>
+				    </tr>
+				</table>
+			</div>
+
+			<!--返回顶部的top按钮-->
+			<a href="javascript:scroll(0,0)">
+			<div class="icon" id="back-to-top" style="width: 48px;height: 48px; float:left">
+			</div>
+
+		</div>
+
+    </body>
+</html>
