@@ -21,7 +21,7 @@ function skillsMain(data, location) {
 		xDiv.setAttribute("class", "skilldivs");
 		xDiv.setAttribute("id", "skill-div"+i);
 		xDiv.setAttribute("style", "display: none;");
-		var xTable = skillsTableCreater(datacutter[1][i]);
+		var xTable = skillsTableCreater(datacutter[1][i],i);
 		xDiv.appendChild(xTable);
 		document.getElementById(location).appendChild(xDiv);
 	}
@@ -70,17 +70,17 @@ function skillsDataCutter(data) {
 	return [labels, cutData];
 }
 
-function skillsTableCreater(data) {
+function skillsTableCreater(data,t) {
 	// var xP = document.createElement("p");
 	// xP.appendChild(document.createTextNode(data));
 	// document.body.appendChild(xP);
 	var xTable = document.createElement("table");
-	xTable.setAttribute("id", "skill-table");
+	xTable.setAttribute("id", "skill-table"+t);
 	skillTableHeading(xTable);
 	for (var i=0, ii=data.length; i < ii; i++) {
-		var xTR = document.createElement("tr");
-		xTable.appendChild(xTR);
-		xTR.setAttribute("id", "skill-r"+[i]);
+		var xTr = document.createElement("tr");
+		xTable.appendChild(xTr);
+		xTr.setAttribute("id", "skill-r"+[i]);
 		var normal = ("0" + data[i][2]).slice(-2);
 		var	hard = ("0" + parseInt(data[i][2]/2)).slice(-2);
 		var crit = ("0" + parseInt(data[i][2]/4)).slice(-2);
@@ -89,7 +89,7 @@ function skillsTableCreater(data) {
 			var xTD = document.createElement("td");
 			xTD.setAttribute("id", "skill-r"+[i]+"d"+[j]);
 			xTD.setAttribute("rowspan", 2);
-			xTR.appendChild(xTD);
+			xTr.appendChild(xTD);
 			switch (j) {
 				case 0:
 					xTD.setAttribute("class", "skill-name");
@@ -100,7 +100,7 @@ function skillsTableCreater(data) {
 					if (data[i][0]==1) {
 						xInput.setAttribute("value", skillArray[j]);
 					}
-						xTD.appendChild(xInput);
+					xTD.appendChild(xInput);
 					break;
 				case 1:
 					xInput = document.createElement("input");
@@ -113,13 +113,14 @@ function skillsTableCreater(data) {
 					xTD.appendChild(document.createTextNode(skillArray[j]));
 					break;
 				case 6:
-					// xTD.setAttribute("class", "skill-hard");
-				case 7:
-					// xTD.setAttribute("class", "skill-crit");
 					xTD.setAttribute("rowspan", 1);
 					xTD.appendChild(document.createTextNode(skillArray[j]));
-					var xTR = document.createElement("tr");
-					xTable.appendChild(xTR);
+					var xTr = document.createElement("tr");
+					xTable.appendChild(xTr);
+					break;
+				case 7:
+					xTD.setAttribute("rowspan", 1);
+					xTD.appendChild(document.createTextNode(skillArray[j]));
 					break;
 				default:
 					xInput = document.createElement("input");
@@ -128,12 +129,13 @@ function skillsTableCreater(data) {
 			}
 		}
 	}
+	xTable.setAttribute("title", xTable.rows.length);	//xTable的最终行数
 	return xTable;
 }
 
 function skillTableHeading(xTable) {
-	var xTR = document.createElement("tr");
-	xTable.appendChild(xTR);
+	var xTr = document.createElement("tr");
+	xTable.appendChild(xTr);
 	var heading = ["技能名称", "初始", "职业", "兴趣", "调整", "最终值"];
 	for (var i=0, ii=heading.length; i<ii; i++) {
 		var xTD = document.createElement("th");
@@ -141,15 +143,71 @@ function skillTableHeading(xTable) {
 		if (i==5) {
 			xTD.setAttribute("colspan", 2);
 		}
-		xTR.appendChild(xTD);
+		xTr.appendChild(xTD);
 	}
 }
 
 
-//	1. 应该做一个单独于表格的按钮 还是为每一个表格做一个按钮
-//		单独一个按钮的优势：html更加整洁，位置更加灵活
-// 		在表格内做的优势：js更简单（倒数第二行添需要考虑行的命名
-//	
+
 function buttonAddRow() {
-	
+	var t=document.getElementById("skill-selector").value;
+	var xTable = document.getElementById("skill-table"+t);
+	var xTr = document.createElement("tr");
+	xTable.appendChild(xTr);
+	var i = xTable.rows.length/2 - 1;
+	xTr.setAttribute("id", "skill-r"+[i]);
+	var skillArray = ["自定义", "00%", "occu", "inte", "modi", "00", "00", "00"];
+	for (var j=0, jj=skillArray.length; j < jj; j++) {
+		var xTD = document.createElement("td");
+		xTD.setAttribute("id", "skill-r"+[i]+"d"+[j]);
+		xTD.setAttribute("rowspan", 2);
+		xTr.appendChild(xTD);
+		switch (j) {
+			case 0:
+				xTD.setAttribute("class", "skill-name");
+				xInput = document.createElement("input");
+				xInput.setAttribute("type", "text");
+				xInput.setAttribute("name", "skill-name"+[i]);
+				xInput.setAttribute("placeholder", skillArray[j]);
+				xTD.appendChild(xInput);
+				xInput.focus();	//设置焦点使光标在此处
+				break;
+			case 1:
+				xInput = document.createElement("input");
+				xInput.setAttribute("type", "text");
+				xTD.appendChild(xInput);
+				xInput.setAttribute("placeholder", skillArray[j]);
+				break;
+			case 5:
+				xTD.appendChild(document.createTextNode(skillArray[j]));
+				break;
+			case 6:
+				xTD.setAttribute("rowspan", 1);
+				xTD.appendChild(document.createTextNode(skillArray[j]));
+				var xTr = document.createElement("tr");
+				xTable.appendChild(xTr);
+				break;
+			case 7:
+				xTD.setAttribute("rowspan", 1);
+				xTD.appendChild(document.createTextNode(skillArray[j]));
+				break;
+			default:
+				xInput = document.createElement("input");
+				xInput.setAttribute("type", "text");
+				xTD.appendChild(xInput);
+		}
+	}
+}
+
+function buttonRemoveRow() {
+	var t = document.getElementById("skill-selector").value;
+	var xTable = document.getElementById("skill-table"+t);
+	var i = xTable.rows.length;
+	// 通过if限制不允许删除原有行
+	if (i > xTable.title) {
+		var xTr0 = xTable.rows[i-1];
+		var xTr1 = xTable.rows[i-2];
+		xTable.removeChild(xTr0);
+		xTable.removeChild(xTr1);
+	}
 }

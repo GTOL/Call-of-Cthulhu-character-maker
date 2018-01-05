@@ -103,13 +103,14 @@
             #skill-holder select {
             	width: 318px;
             	font-size: 16px;
+            	height: 25px;
             }
             #skill-holder select option {
             	text-align: center;
             }
             #skill-holder .skilldivs {
             	overflow: auto;
-            	height: 300px;
+            	height: 290px;
             	padding-bottom: 2px;
             }
             #skill-holder table {
@@ -499,6 +500,10 @@
 					
 					// skillTable(data)
 				</script>
+				<p style="margin-top: 10px;">
+					<input type="button" value="添加一行" onclick="buttonAddRow();">
+					<input type="button" value="删除一行" onclick="buttonRemoveRow();">
+				</p>
 			</div>
 			<!-- 装备与持有物 -->
 			<div class="holder" id="gear-holder">
