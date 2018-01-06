@@ -11,7 +11,7 @@ var dataSample = [
 	[2,	"其他",				01],
 	[2,	"其他",				01],
 ];
-·
+
 function skillsMain(data, location) {
 	var datacutter = skillsDataCutter(data);
 	var xSelect = skillsSelectCreater(datacutter[0]);
