@@ -11,7 +11,7 @@ var dataSample = [
 	[2,	"其他",				01],
 	[2,	"其他",				01],
 ];
-
+·
 function skillsMain(data, location) {
 	var datacutter = skillsDataCutter(data);
 	var xSelect = skillsSelectCreater(datacutter[0]);
@@ -20,7 +20,7 @@ function skillsMain(data, location) {
 		var xDiv = document.createElement("div");
 		xDiv.setAttribute("class", "skilldivs");
 		xDiv.setAttribute("id", "skill-div"+i);
-		xDiv.setAttribute("style", "display: none;");
+		xDiv.style.display = "none";
 		var xTable = skillsTableCreater(datacutter[1][i],i);
 		xDiv.appendChild(xTable);
 		document.getElementById(location).appendChild(xDiv);
@@ -29,15 +29,15 @@ function skillsMain(data, location) {
 }
 
 function skillsInitialize() {
-	document.getElementById("skill-div0").setAttribute("style", "display: inline-block;");
+	document.getElementById("skill-div0").style.display = "inline-block";
 }
 
 function skillsSwitcher(value) {
 	var skilldivs = document.getElementsByClassName("skilldivs");
 	for (var i=0, ii=skilldivs.length; i<ii; i++) {
-		skilldivs[i].setAttribute("style", "display: none;");
+		skilldivs[i].style.display = "none";
 	}
-	skilldivs[value].setAttribute("style", "display: inline-block;");
+	skilldivs[value].style.display = "inline-block";
 }
 
 function skillsSelectCreater(labels) {
@@ -81,9 +81,9 @@ function skillsTableCreater(data,t) {
 		var xTr = document.createElement("tr");
 		xTable.appendChild(xTr);
 		xTr.setAttribute("id", "skill-r"+[i]);
-		var normal = ("0" + data[i][2]).slice(-2);
-		var	hard = ("0" + parseInt(data[i][2]/2)).slice(-2);
-		var crit = ("0" + parseInt(data[i][2]/4)).slice(-2);
+		var normal	= ("0" + data[i][2]).slice(-2);
+		var	hard	= ("0" + parseInt(data[i][2]/2)).slice(-2);
+		var crit	= ("0" + parseInt(data[i][2]/4)).slice(-2);
 		var skillArray = [data[i][1], normal+"%", "occu", "inte", "modi", normal, hard, crit];
 		for (var j=0, jj=skillArray.length; j < jj; j++) {
 			var xTD = document.createElement("td");
