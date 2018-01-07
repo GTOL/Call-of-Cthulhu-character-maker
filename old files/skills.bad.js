@@ -1,44 +1,60 @@
-// ver 1.0
+ // data结构：类型 名称 初始值
+var dataSample = [
+	[0,	"艺术与手艺(05%)", 	00],
+	[1,	"表演", 			05],
+	[1,	"美术", 			05],
+	[1,	"伪造", 			05],
+	[1,	"摄影",				05],
+	[0,	"语言(01%)",		00],
+	[2,	"母语",				01],
+	[2,	"其他", 			01],
+	[2,	"其他",				01],
+	[2,	"其他",				01],
+];
+
+//	ver 1.1 改用jQuery+DocumentFragment
+//	debug用代码
+//	$("<p#test><p>").text(string).appendTo($("#skill-holder"));
+//	console.debug("不知道写啥");
+//	辣鸡ver 1.1 跑的比原来还慢
 function skillsMain(data) {
 	var datacutter = skillsDataCutter(data);
 	var xSelect = skillsSelectCreater(datacutter[0]);
-	document.getElementById("skill-holder").appendChild(xSelect); //在网页中创建select
+	var frag = document.createDocumentFragment();
+	frag.appendChild(xSelect);
 	for (var i=0, ii=datacutter[0].length; i<ii; i++) {
-		var xDiv = document.createElement("div");
-		xDiv.setAttribute("class", "skilldivs");
-		xDiv.setAttribute("id", "skill-div"+i);
-		xDiv.style.display = "none";
-		var xTable = skillsTableCreater(datacutter[1][i],i);
-		xDiv.appendChild(xTable);
-		document.getElementById("skill-holder").appendChild(xDiv);
+		$("<div></div>").attr({"class":"skilldivs", "id":"skill-div"+i})
+						.css("display","inline-block")
+						.hide()
+						.append(skillsTableCreater(datacutter[1][i],i))
+						.appendTo(frag);
 	}
+	$("#skill-holder").append(frag);
 	skillsInitialize();
 }
 
 function skillsInitialize() {
-	document.getElementById("skill-div0").style.display = "inline-block";
+	$("#skill-div0").show();
 }
 
-
 function skillsSwitcher(value) {
-	var skilldivs = document.getElementsByClassName("skilldivs");
-	for (var i=0, ii=skilldivs.length; i<ii; i++) {
-		skilldivs[i].style.display = "none";
-	}
-	skilldivs[value].style.display = "inline-block";
+	var skilldivs = $(".skilldivs");
+	skilldivs.hide();
+	skilldivs.eq(value).show();
 }
 
 function skillsSelectCreater(labels) {
-	var xSelect = document.createElement("select");
-	xSelect.setAttribute("id", "skill-selector");
-	xSelect.setAttribute("onchange", "skillsSwitcher(this.value);");
+	var xSelect = $("<select></select>").attr({
+		"id"		: "skill-selector",
+		"onchange"	: "skillsSwitcher(this.value);"
+	})										
 	for (var i=0, ii=labels.length; i<ii; i++) {
-		var xOption = document.createElement("option");
-		xOption.setAttribute("value", i);
-		xOption.appendChild(document.createTextNode(labels[i]));
-		xSelect.appendChild(xOption);
+		var xOption = $("<option></option>")
+			.attr("value", i)
+			.text(labels[i])
+			.appendTo(xSelect);
 	}
-	return xSelect;
+	return xSelect[0];
 }
 
 function skillsDataCutter(data) {
@@ -134,8 +150,6 @@ function skillTableHeading(xTable) {
 		xTr.appendChild(xTD);
 	}
 }
-
-
 
 function buttonAddRow() {
 	var t=document.getElementById("skill-selector").value;

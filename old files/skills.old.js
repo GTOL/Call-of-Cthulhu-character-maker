@@ -1,8 +1,8 @@
 // ver 1.0
-function skillsMain(data) {
+function skillsMain(data, location) {
 	var datacutter = skillsDataCutter(data);
 	var xSelect = skillsSelectCreater(datacutter[0]);
-	document.getElementById("skill-holder").appendChild(xSelect); //在网页中创建select
+	document.getElementById(location).appendChild(xSelect); //在网页中创建select
 	for (var i=0, ii=datacutter[0].length; i<ii; i++) {
 		var xDiv = document.createElement("div");
 		xDiv.setAttribute("class", "skilldivs");
@@ -10,7 +10,7 @@ function skillsMain(data) {
 		xDiv.style.display = "none";
 		var xTable = skillsTableCreater(datacutter[1][i],i);
 		xDiv.appendChild(xTable);
-		document.getElementById("skill-holder").appendChild(xDiv);
+		document.getElementById(location).appendChild(xDiv);
 	}
 	skillsInitialize();
 }
