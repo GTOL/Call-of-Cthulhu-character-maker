@@ -1,5 +1,20 @@
 // ver 1.0
 function skillsMain(data) {
+ // data结构：类型 名称 初始值
+var dataSample = [
+	[0,	"艺术与手艺(05%)", 	00],
+	[1,	"表演", 			05],
+	[1,	"美术", 			05],
+	[1,	"伪造", 			05],
+	[1,	"摄影",				05],
+	[0,	"语言(01%)",		00],
+	[2,	"母语",				01],
+	[2,	"其他", 			01],
+	[2,	"其他",				01],
+	[2,	"其他",				01],
+];
+
+function skillsMain(data, location) {
 	var datacutter = skillsDataCutter(data);
 	var xSelect = skillsSelectCreater(datacutter[0]);
 	document.getElementById("skill-holder").appendChild(xSelect); //在网页中创建select
@@ -18,7 +33,6 @@ function skillsMain(data) {
 function skillsInitialize() {
 	document.getElementById("skill-div0").style.display = "inline-block";
 }
-
 
 function skillsSwitcher(value) {
 	var skilldivs = document.getElementsByClassName("skilldivs");
@@ -99,16 +113,19 @@ function skillsTableCreater(data,t) {
 					break;
 				case 5:
 					xTD.appendChild(document.createTextNode(skillArray[j]));
+					xTD.addClass(".Sfinal-value")
 					break;
 				case 6:
 					xTD.setAttribute("rowspan", 1);
 					xTD.appendChild(document.createTextNode(skillArray[j]));
 					var xTr = document.createElement("tr");
 					xTable.appendChild(xTr);
+					xTD.addClass(".Shard-value")
 					break;
 				case 7:
 					xTD.setAttribute("rowspan", 1);
 					xTD.appendChild(document.createTextNode(skillArray[j]));
+					xTD.addClass(".Scrit-value")
 					break;
 				default:
 					xInput = document.createElement("input");

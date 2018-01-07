@@ -296,6 +296,28 @@
 			</div>
 		    <!-- 属性 -->
 			<div class="holder" id="attr-holder">
+			<!-- <script src="jQcalcu111.js"></script> -->
+
+			<!-- 属性表格的自动计算（仅每行求和）-->
+			<script type="text/javascript">
+		
+				$(document).ready(function(){
+			    $("table tr").each(function(){
+				$(":text").change(function(){
+
+			var xinitial =$(this).parent().parent().find($(".initial-value")); //获取初始值
+			var xmodi =$(this).parent().parent().find($(".modi-value"));
+			var num1 = xinitial.val()
+			var num2 = xmodi.val()
+			var sum = (num1-0) + (num2-0)
+			$(this).parent().parent().find($(".attr-final")).text(sum); 
+			$(this).parent().parent().find($(".hard-value")).text(sum/2); 
+			$(this).parent().parent().find($(".crit-value")).text(sum/4); 
+				})
+				})
+				})
+			
+	</script>
 				<h2>调查员属性</h2>
 				<p>
 					<table style="border: none;">
@@ -308,59 +330,59 @@
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">力量<br>STR</td>
-							<td rowspan="2"><input type="text" name="str" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="str-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="str" placeholder="00" ></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="str-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">敏捷<br>DEX</td>
-							<td rowspan="2"><input type="text" name="dex" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="dex-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="dex" placeholder="00"></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="dex-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">智力<br>INT</td>
-							<td rowspan="2"><input type="text" name="int" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="int-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="int" placeholder="00"></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="int-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">体质<br>CON</td>
-							<td rowspan="2"><input type="text" name="con" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="con-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="con" placeholder="00"></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="con-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">外貌<br>APP</td>
-							<td rowspan="2"><input type="text" name="app" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="app-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="app" placeholder="00"></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="app-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">意志<br>POW</td>
-							<td rowspan="2"><input type="text" name="pow" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="pow-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="pow" placeholder="00"></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="pow-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">体型<br>SIZ</td>
 							<td rowspan="2" style="font-size: 22px;">num</td>
 							<td rowspan="2"><input type="text" name="siz-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
+							<td rowspan="2" class="attr-final"></td>
 							<td>00</td></tr><tr><td>00</td>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border: none;">教育<br>EDU</td>
-							<td rowspan="2"><input type="text" name="edu" placeholder="00"></td>
-							<td rowspan="2"><input type="text" name="edu-modi"></td>
-							<td rowspan="2" class="attr-final">00</td>
-							<td>00</td></tr><tr><td>00</td>
+							<td rowspan="2"><input type="text" class="initial-value" name="edu" placeholder="00"></td>
+							<td rowspan="2"><input type="text" class="modi-value" name="edu-modi"></td>
+							<td rowspan="2" class="attr-final"></td>
+							<td class="hard-value">00</td></tr><tr><td class="crit-value">00</td>
 						</tr>
 					</table>
 				</p>
@@ -376,6 +398,7 @@
 				<!-- 技能input默认值和输入值高度不同 -->
 				<p>职业点数：<span>00</span> / <span>00</span></p>
 				<p>兴趣点数：<span>00</span> / <span>00</span></p>
+
 				<script src="skills.js"></script>
 				<script>
 					var skills = [
@@ -503,11 +526,36 @@
 					
 					// skillTable(data)
 				</script>
+				<!--技能表格的自动计算（仅每行求和）-->
+				<script type="text/javascript">			
+					$(document).ready(function(){
+				    $("table tr").each(function(){
+					$(":text").change(function(){
+
+				var xSinit =$(this).parent().parent().find($(".Sinit-value"));
+				var xSprof =$(this).parent().parent().find($(".Sprof-value"));
+				var xSinterest =$(this).parent().parent().find($(".Sinterest-value"));
+				var xSmodi =$(this).parent().parent().find($(".Smodi-value"));				
+				var num1 = xSinit.val()
+				var num2 = xSprof.val()
+				var num3 = xSinterest.val()
+				var num4 = xSmodi.val()
+				var sum = (num1-0) + (num2-0) + (num3-0) + (num4-0) 
+				$(this).parent().parent().find($(".Sfinal-value")).text(sum); 
+				$(this).parent().parent().find($(".Shard-value")).text(sum/2); 
+				$(this).parent().parent().find($(".Scrit-value")).text(sum/4); 
+					})
+					})
+					})
+				</script>
+
+				
 				<p style="margin-top: 10px;">
 					<input type="button" value="添加一行" onclick="buttonAddRow();">
 					<input type="button" value="删除一行" onclick="buttonRemoveRow();">
 				</p>
 			</div>
+
 			<!-- 装备与持有物 -->
 			<div class="holder" id="gear-holder">
 				<h2>装备与持有物</h2>
