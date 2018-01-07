@@ -1,20 +1,5 @@
 // ver 1.0
 function skillsMain(data) {
- // data结构：类型 名称 初始值
-var dataSample = [
-	[0,	"艺术与手艺(05%)", 	00],
-	[1,	"表演", 			05],
-	[1,	"美术", 			05],
-	[1,	"伪造", 			05],
-	[1,	"摄影",				05],
-	[0,	"语言(01%)",		00],
-	[2,	"母语",				01],
-	[2,	"其他", 			01],
-	[2,	"其他",				01],
-	[2,	"其他",				01],
-];
-
-function skillsMain(data, location) {
 	var datacutter = skillsDataCutter(data);
 	var xSelect = skillsSelectCreater(datacutter[0]);
 	document.getElementById("skill-holder").appendChild(xSelect); //在网页中创建select
@@ -82,14 +67,17 @@ function skillsTableCreater(data,t) {
 	for (var i=0, ii=data.length; i < ii; i++) {
 		var xTr = document.createElement("tr");
 		xTable.appendChild(xTr);
-		xTr.setAttribute("id", "skill-r"+[i]);
-		var normal	= ("0" + data[i][2]).slice(-2);
-		var	hard	= ("0" + parseInt(data[i][2]/2)).slice(-2);
-		var crit	= ("0" + parseInt(data[i][2]/4)).slice(-2);
-		var skillArray = [data[i][1], normal+"%", "occu", "inte", "modi", normal, hard, crit];
+		xTr.setAttribute("id", "skill-t"+t+"r"+i);
+		// var normal	= ("0" + data[i][2]).slice(-2);
+		// var	hard	= ("0" + parseInt(data[i][2]/2)).slice(-2);
+		// var crit	= ("0" + parseInt(data[i][2]/4)).slice(-2);
+		var normal	= data[i][2];
+		var hard 	= parseInt(data[i][2]/2);
+		var crit 	= parseInt(data[i][2]/4);
+		var skillArray = [data[i][1], normal, "occu", "inte", "modi", normal, hard, crit];
 		for (var j=0, jj=skillArray.length; j < jj; j++) {
 			var xTD = document.createElement("td");
-			xTD.setAttribute("id", "skill-r"+[i]+"d"+[j]);
+			xTD.setAttribute("id", "skill-t"+t+"r"+i+"d"+j);
 			xTD.setAttribute("rowspan", 2);
 			xTr.appendChild(xTD);
 			switch (j) {
@@ -107,29 +95,35 @@ function skillsTableCreater(data,t) {
 				case 1:
 					xInput = document.createElement("input");
 					xInput.setAttribute("type", "text");
-					xTD.appendChild(xInput);
 					xInput.setAttribute("placeholder", skillArray[j]);
 					xInput.setAttribute("value", skillArray[j]);
+					xInput.setAttribute("class", "skill-init");
+					xInput.setAttribute("maxlength", 2);
+					xInput.style.width = "50%";
+					xTD.appendChild(xInput);
+					xTD.setAttribute("width", 40);
+					xTD.appendChild(document.createTextNode("  %"));
 					break;
 				case 5:
 					xTD.appendChild(document.createTextNode(skillArray[j]));
-					xTD.addClass(".Sfinal-value")
+					xTD.setAttribute("class", "skill-final");
 					break;
 				case 6:
 					xTD.setAttribute("rowspan", 1);
 					xTD.appendChild(document.createTextNode(skillArray[j]));
+					xTD.setAttribute("class", "skill-hard");
 					var xTr = document.createElement("tr");
 					xTable.appendChild(xTr);
-					xTD.addClass(".Shard-value")
 					break;
 				case 7:
 					xTD.setAttribute("rowspan", 1);
+					xTD.setAttribute("class", "skill-crit");
 					xTD.appendChild(document.createTextNode(skillArray[j]));
-					xTD.addClass(".Scrit-value")
 					break;
 				default:
 					xInput = document.createElement("input");
 					xInput.setAttribute("type", "text");
+					xInput.setAttribute("class", "skill-"+skillArray[j]);
 					xTD.appendChild(xInput);
 			}
 		}
@@ -161,45 +155,56 @@ function buttonAddRow() {
 	xTable.appendChild(xTr);
 	var i = xTable.rows.length/2 - 1;
 	xTr.setAttribute("id", "skill-r"+[i]);
-	var skillArray = ["自定义", "00%", "occu", "inte", "modi", "00", "00", "00"];
+	var skillArray = ["自定义", "00", "occu", "inte", "modi", "0", "0", "0"];
 	for (var j=0, jj=skillArray.length; j < jj; j++) {
 		var xTD = document.createElement("td");
 		xTD.setAttribute("id", "skill-r"+[i]+"d"+[j]);
 		xTD.setAttribute("rowspan", 2);
 		xTr.appendChild(xTD);
 		switch (j) {
-			case 0:
-				xTD.setAttribute("class", "skill-name");
-				xInput = document.createElement("input");
-				xInput.setAttribute("type", "text");
-				xInput.setAttribute("name", "skill-name"+[i]);
-				xInput.setAttribute("placeholder", skillArray[j]);
-				xTD.appendChild(xInput);
-				xInput.focus();	//设置焦点使光标在此处
-				break;
-			case 1:
-				xInput = document.createElement("input");
-				xInput.setAttribute("type", "text");
-				xTD.appendChild(xInput);
-				xInput.setAttribute("placeholder", skillArray[j]);
-				break;
-			case 5:
-				xTD.appendChild(document.createTextNode(skillArray[j]));
-				break;
-			case 6:
-				xTD.setAttribute("rowspan", 1);
-				xTD.appendChild(document.createTextNode(skillArray[j]));
-				var xTr = document.createElement("tr");
-				xTable.appendChild(xTr);
-				break;
-			case 7:
-				xTD.setAttribute("rowspan", 1);
-				xTD.appendChild(document.createTextNode(skillArray[j]));
-				break;
-			default:
-				xInput = document.createElement("input");
-				xInput.setAttribute("type", "text");
-				xTD.appendChild(xInput);
+		case 0:
+			xTD.setAttribute("class", "skill-name");
+			xInput = document.createElement("input");
+			xInput.setAttribute("type", "text");
+			xInput.setAttribute("name", "skill-name"+[i]);
+			xInput.setAttribute("placeholder", skillArray[j]);
+			xInput.setAttribute("value", skillArray[j]);
+			xTD.appendChild(xInput);
+			xInput.focus();
+			break;
+		case 1:
+			xInput = document.createElement("input");
+			xInput.setAttribute("type", "text");
+			xInput.setAttribute("placeholder", skillArray[j]);
+			xInput.setAttribute("value", skillArray[j]);
+			xInput.setAttribute("class", "skill-init");
+			xInput.setAttribute("maxlength", 2);
+			xInput.style.width = "50%";
+			xTD.appendChild(xInput);
+			xTD.setAttribute("width", 40);
+			xTD.appendChild(document.createTextNode("  %"));
+			break;
+		case 5:
+			xTD.appendChild(document.createTextNode(skillArray[j]));
+			xTD.setAttribute("class", "skill-final");
+			break;
+		case 6:
+			xTD.setAttribute("rowspan", 1);
+			xTD.appendChild(document.createTextNode(skillArray[j]));
+			xTD.setAttribute("class", "skill-hard");
+			var xTr = document.createElement("tr");
+			xTable.appendChild(xTr);
+			break;
+		case 7:
+			xTD.setAttribute("rowspan", 1);
+			xTD.setAttribute("class", "skill-crit");
+			xTD.appendChild(document.createTextNode(skillArray[j]));
+			break;
+		default:
+			xInput = document.createElement("input");
+			xInput.setAttribute("type", "text");
+			xInput.setAttribute("class", "skill-"+skillArray[j]);
+			xTD.appendChild(xInput);
 		}
 	}
 }
