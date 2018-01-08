@@ -128,7 +128,7 @@ function skillsTableCreater(data,t) {
 			}
 		}
 	}
-	xTable.setAttribute("title", xTable.rows.length);	//xTable的最终行数
+	$(xTable).data("initlength", xTable.rows.length);	//xTable的最终行数
 	return xTable;
 }
 
@@ -211,8 +211,9 @@ function buttonRemoveRow() {
 	var t = document.getElementById("skill-selector").value;
 	var xTable = document.getElementById("skill-table"+t);
 	var i = xTable.rows.length;
+	var initlength = $(xTable).data("initlength");
 	// 通过if限制不允许删除原有行
-	if (i > xTable.title) {
+	if (i > initlength) {
 		var xTr0 = xTable.rows[i-1];
 		var xTr1 = xTable.rows[i-2];
 		xTable.removeChild(xTr0);
