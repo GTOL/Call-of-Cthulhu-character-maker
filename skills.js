@@ -154,11 +154,11 @@ function buttonAddRow() {
 	var xTr = document.createElement("tr");
 	xTable.appendChild(xTr);
 	var i = xTable.rows.length/2 - 1;
-	xTr.setAttribute("id", "skill-r"+[i]);
+	xTr.setAttribute("id", "skill-t"+t+"r"+i);
 	var skillArray = ["自定义", "00", "occu", "inte", "modi", "0", "0", "0"];
 	for (var j=0, jj=skillArray.length; j < jj; j++) {
 		var xTD = document.createElement("td");
-		xTD.setAttribute("id", "skill-r"+[i]+"d"+[j]);
+		xTD.setAttribute("id", "skill-t"+t+"r"+i+"d"+j);
 		xTD.setAttribute("rowspan", 2);
 		xTr.appendChild(xTD);
 		switch (j) {

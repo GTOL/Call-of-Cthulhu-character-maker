@@ -301,7 +301,7 @@
 			<!-- 属性表格的自动计算（仅每行求和）-->
 			<script type="text/javascript">
 				$(document).ready(function(){
-			    	$("table").change(function(){
+			    	$("#attr-holder :text").change(function(){
 						var init =$(this).parent().parent().find($(".attr-init")); //获取初始值
 						var modi =$(this).parent().parent().find($(".attr-modi"));
 						var num1 = init.val()
@@ -525,8 +525,7 @@
 				<!--技能表格的自动计算（仅每行求和）-->
 				<script type="text/javascript">			
 					$(document).ready(function(){
-					$(":text").change(function(){
-
+						$("#skill-holder").on("change",":text", function(){
 				var xSinit =$(this).parent().parent().find($(".skill-init"));
 				var xSprof =$(this).parent().parent().find($(".skill-occu"));
 				var xSinte =$(this).parent().parent().find($(".skill-inte"));
