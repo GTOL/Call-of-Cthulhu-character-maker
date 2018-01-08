@@ -168,7 +168,6 @@ function buttonAddRow() {
 			xInput.setAttribute("type", "text");
 			xInput.setAttribute("name", "skill-name"+[i]);
 			xInput.setAttribute("placeholder", skillArray[j]);
-			xInput.setAttribute("value", skillArray[j]);
 			xTD.appendChild(xInput);
 			xInput.focus();
 			break;
@@ -176,7 +175,6 @@ function buttonAddRow() {
 			xInput = document.createElement("input");
 			xInput.setAttribute("type", "text");
 			xInput.setAttribute("placeholder", skillArray[j]);
-			xInput.setAttribute("value", skillArray[j]);
 			xInput.setAttribute("class", "skill-init");
 			xInput.setAttribute("maxlength", 2);
 			xInput.style.width = "50%";
