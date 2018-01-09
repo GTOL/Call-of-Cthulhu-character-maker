@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   				crossorigin="anonymous"></script>
+
         <style>
 		    div#frame {
 		    	width: 900px;
@@ -304,9 +305,13 @@
 			</div>
 		    <!-- 属性 -->
 			<div class="holder" id="attr-holder">
+<<<<<<< HEAD
 			<!-- <script src="jQcalcu111.js"></script> -->
 
 			<!-- 属性表格的自动计算 -->
+=======
+			</script>
+>>>>>>> b881330dc5c80250279a860f160b5d31b3b68045
 			<script type="text/javascript">
 				//	行内的自动计算
 				$(document).ready(function(){
@@ -728,7 +733,18 @@
 		       		<div id="cash-holder" style="width: 350px;height: 300px; border: 0px solid #666;background-color: ;float: left;padding:10px" >
 			       		<h3 style="text-align: center">现金与资产</h3>
 			       		<div style="padding:10px">
-			       		现金：<input type="text" name="cash" style="width:100px" ><br>
+
+			       		现金：<select name="cash-unit">
+						<option value="USD">$</option>
+						<option value="RMB">¥</option>
+						<option value="JPY">J￥</option>
+						<option value="EUR">€</option>
+						<option value="GBP">￡</option>
+						<option value="KRW">₩</option>
+						<option value="TWD">NT$</option>
+						<option value="HKD">HK$</option>
+						<option value="cash-unit-null"> </option>
+						</select><input type="text" name="cash" style="width:100px" ><br>
 			       		调查员生活水平：<textarea rows="3" cols="40" style="resize:none"></textarea><br>
 			       		其他资产：<textarea rows="5" cols="40" style="resize:none"></textarea>
 			       		</div>
