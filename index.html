@@ -305,13 +305,8 @@
 			</div>
 		    <!-- 属性 -->
 			<div class="holder" id="attr-holder">
-<<<<<<< HEAD
-			<!-- <script src="jQcalcu111.js"></script> -->
 
 			<!-- 属性表格的自动计算 -->
-=======
-			</script>
->>>>>>> b881330dc5c80250279a860f160b5d31b3b68045
 			<script type="text/javascript">
 				//	行内的自动计算
 				$(document).ready(function(){
@@ -343,78 +338,77 @@
 						$(this).parent().parent().find($(".attr-hard")).text(parseInt(sum/2)); 
 						$(this).parent().parent().next().find($(".attr-crit")).text(parseInt(sum/4)); 
 					})
-				})
-			
-	</script>
-				<h2>调查员属性</h2>
-				<p>
-					<table style="border: none;">
-						<tr>
-							<th rowspan="2">名称</th>
-							<th rowspan="2">初始</th>
-							<th rowspan="2">修改</th>
-							<th rowspan="2">最终值</th>
-							<th style="font-size: 13px;">困难成功</th></tr><tr><th style="font-size: 13px;">极限成功</th>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">力量<br>STR</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="str" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="str-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">敏捷<br>DEX</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="dex" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="dex-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">智力<br>INT</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="int" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="int-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">体质<br>CON</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="con" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="con-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">外貌<br>APP</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="app" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="app-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">意志<br>POW</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="pow" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="pow-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">体型<br>SIZ</td>
-							<td rowspan="2" style="font-size: 22px;">num</td>
-							<td rowspan="2"><input type="text" name="siz-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td>00</td></tr><tr><td>00</td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="border: none;">教育<br>EDU</td>
-							<td rowspan="2"><input type="text" class="attr-init" name="edu" placeholder="00" maxlength="2"></td>
-							<td rowspan="2"><input type="text" class="attr-modi" name="edu-modi"></td>
-							<td rowspan="2" class="attr-final">0</td>
-							<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
-						</tr>
-					</table>
-				</p>
-				<div style="position: absolute; bottom: 10px; right: 10px;">年龄调整<input type="checkbox" name="age-modifier"></div>
+				})	
+			</script>
+			<h2>调查员属性</h2>
+			<p>
+				<table style="border: none;">
+					<tr>
+						<th rowspan="2">名称</th>
+						<th rowspan="2">初始</th>
+						<th rowspan="2">修改</th>
+						<th rowspan="2">最终值</th>
+						<th style="font-size: 13px;">困难成功</th></tr><tr><th style="font-size: 13px;">极限成功</th>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">力量<br>STR</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="str" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="str-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">敏捷<br>DEX</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="dex" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="dex-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">智力<br>INT</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="int" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="int-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">体质<br>CON</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="con" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="con-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">外貌<br>APP</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="app" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="app-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">意志<br>POW</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="pow" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="pow-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">体型<br>SIZ</td>
+						<td rowspan="2" style="font-size: 22px;">num</td>
+						<td rowspan="2"><input type="text" name="siz-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td>00</td></tr><tr><td>00</td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="border: none;">教育<br>EDU</td>
+						<td rowspan="2"><input type="text" class="attr-init" name="edu" placeholder="00" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-modi" name="edu-modi"></td>
+						<td rowspan="2" class="attr-final">0</td>
+						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+					</tr>
+				</table>
+			</p>
+			<div style="position: absolute; bottom: 10px; right: 10px;">年龄调整<input type="checkbox" name="age-modifier"></div>
 			</div>
 			<!-- 技能 -->
 			<div class="holder" id="skill-holder">
