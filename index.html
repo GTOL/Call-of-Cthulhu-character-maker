@@ -311,8 +311,9 @@
 				//	行内的自动计算
 				$(document).ready(function(){
 			    	$("#attr-holder :text").change(function(){
-						var init =$(this).parent().parent().find($(".attr-init")); //获取初始值
-						var modi =$(this).parent().parent().find($(".attr-modi"));
+			    		var xTr = $(this).parent().parent();
+						var init =xTr.find($(".attr-init")); //获取初始值
+						var modi =xTr.find($(".attr-modi"));
 						var num1 = init.val()
 						var num2 = modi.val()
 						var sum = (num1-0) + (num2-0)
@@ -323,20 +324,20 @@
 							$(this).css("background-color","transparent");
 						}
 						if (sum<0 || isNaN(sum)) {
-							$(this).parent().parent().find($(".attr-final")).css("background-color","pink");
+							xTr.find($(".attr-final")).css("background-color","pink");
 							if (sum<-9999) {
 								sum=-9999;
 							}
 						} else if (sum>=99) {
-							$(this).parent().parent().find($(".attr-final")).css("font-weight","bold");
+							xTr.find($(".attr-final")).css("font-weight","bold");
 							sum=99;
 						} else {
-							$(this).parent().parent().find($(".attr-final")).css("background-color","transparent");
-							$(this).parent().parent().find($(".skill-final")).css("font-weight","normal");
+							xTr.find($(".attr-final")).css("background-color","transparent");
+							xTr.find($(".skill-final")).css("font-weight","normal");
 						}
-						$(this).parent().parent().find($(".attr-final")).text(sum); 
-						$(this).parent().parent().find($(".attr-hard")).text(parseInt(sum/2)); 
-						$(this).parent().parent().next().find($(".attr-crit")).text(parseInt(sum/4)); 
+						xTr.find($(".attr-final")).text(sum); 
+						xTr.find($(".attr-hard")).text(parseInt(sum/2)); 
+						xTr.next().find($(".attr-crit")).text(parseInt(sum/4)); 
 					})
 				})	
 			</script>
@@ -549,19 +550,21 @@
 					// skillTable(data)
 				</script>
 				<!--技能表格的自动计算（仅每行求和）-->
-				<script type="text/javascript">			
+				<script type="text/javascript">	
+					// 行内的自动计算
 					$(document).ready(function(){
 						$("#skill-holder").on("change",":text", function(){
-							var xSinit =$(this).parent().parent().find($(".skill-init"));
-							var xSprof =$(this).parent().parent().find($(".skill-occu"));
-							var xSinte =$(this).parent().parent().find($(".skill-inte"));
-							var xSmodi =$(this).parent().parent().find($(".skill-modi"));				
+							var xTr = $(this).parent().parent();
+							var xSinit = xTr.find($(".skill-init"));
+							var xSprof = xTr.find($(".skill-occu"));
+							var xSinte = xTr.find($(".skill-inte"));
+							var xSmodi = xTr.find($(".skill-modi"));				
 							var num1 = xSinit.val()
 							var num2 = xSprof.val()
 							var num3 = xSinte.val()
 							var num4 = xSmodi.val()
 							var sum = (num1-0) + (num2-0) + (num3-0) + (num4-0) 
-							// 如果a小于0，a报错；如果sum小于0，sum报错；如果sum大于99，输出99；如果a或b不是数字，报错；其他则执行。
+							// 错误判断部分
 							if (num1<0 || num2<0 || num3<0 || isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4)) {
 								$(this).css("background-color","pink");
 							} else {
@@ -570,15 +573,15 @@
 							if (sum<0 || isNaN(sum)) {
 								sum=0;
 							} else if (sum>=99) {
-								$(this).parent().parent().find($(".skill-final")).css("font-weight","bold");
+								xTr.find($(".skill-final")).css("font-weight","bold");
 								sum=99;
 							} else {
-								$(this).parent().parent().find($(".skill-final")).css("background-color","transparent");
-								$(this).parent().parent().find($(".skill-final")).css("font-weight","normal");
+								xTr.find($(".skill-final")).css("background-color","transparent");
+								xTr.find($(".skill-final")).css("font-weight","normal");
 							}
-							$(this).parent().parent().find($(".skill-final")).text(sum); 
-							$(this).parent().parent().find($(".skill-hard")).text(parseInt(sum/2)); 
-							$(this).parent().parent().next().find($(".skill-crit")).text(parseInt(sum/4)); 
+							xTr.find($(".skill-final")).text(sum); 
+							xTr.find($(".skill-hard")).text(parseInt(sum/2)); 
+							xTr.next().find($(".skill-crit")).text(parseInt(sum/4)); 
 						})
 					})
 				</script>
