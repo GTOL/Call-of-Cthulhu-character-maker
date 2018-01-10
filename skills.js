@@ -70,10 +70,10 @@ function skillsTableCreater(data,t) {
 		xTr.setAttribute("id", "skill-t"+t+"r"+i);
 		// var normal	= ("0" + data[i][2]).slice(-2);
 		// var	hard	= ("0" + parseInt(data[i][2]/2)).slice(-2);
-		// var crit	= ("0" + parseInt(data[i][2]/4)).slice(-2);
+		// var crit	= ("0" + parseInt(data[i][2]/5)).slice(-2);
 		var normal	= data[i][2];
 		var hard 	= parseInt(data[i][2]/2);
-		var crit 	= parseInt(data[i][2]/4);
+		var crit 	= parseInt(data[i][2]/5);
 		var skillArray = [data[i][1], normal, "occu", "inte", "modi", normal, hard, crit];
 		for (var j=0, jj=skillArray.length; j < jj; j++) {
 			var xTD = document.createElement("td");

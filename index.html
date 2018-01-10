@@ -292,8 +292,8 @@
 					<p>健康状态：<select name="healthy-stat">
 						<option value="healthy">健康</option>
 						<option value="major-wound">重伤</option>
-						<option value="lost-con">失去意识</option>
-						<option value="death">死亡</option></select>
+						<option value="lost-con">昏迷</option>
+						<option value="death">濒死</option></select>
 					</p>
 					<p></p>
 					<p>临时疯狂：<input type="checkbox" name="temp-insame"></p>
@@ -310,12 +310,10 @@
 			<script type="text/javascript">
 				//	行内的自动计算
 				$(document).ready(function(){
-			    	$("#attr-holder :text").change(function(){
-			    		var xTr = $(this).parent().parent();
-						var init =xTr.find($(".attr-init")); //获取初始值
-						var modi =xTr.find($(".attr-modi"));
-						var num1 = init.val()
-						var num2 = modi.val()
+					$("#attr-holder :text").change(function(){
+						var xTr = $(this).parent().parent();
+						var num1 =xTr.find($(".attr-init")).val();
+						var num2 =xTr.find($(".attr-modi")).val();
 						var sum = (num1-0) + (num2-0)
 						// 如果a小于0，a报错；如果sum小于0，sum报错；如果sum大于99，输出99；如果a或b不是数字，报错；其他则执行。
 						if (num1<0 || isNaN(num1) || isNaN(num2)) {
@@ -337,9 +335,17 @@
 						}
 						xTr.find($(".attr-final")).text(sum); 
 						xTr.find($(".attr-hard")).text(parseInt(sum/2)); 
-						xTr.next().find($(".attr-crit")).text(parseInt(sum/4)); 
+						xTr.next().find($(".attr-crit")).text(parseInt(sum/5)); 
 					})
-				})	
+				})
+
+				// 力量对应：伤害加成，体格
+				$(document).ready(function(){
+					$("input[name*='str']").change(function(){
+						var str = $("input[name*='str']").val();
+						var 
+					})
+				})
 			</script>
 			<h2>调查员属性</h2>
 			<p>
@@ -555,15 +561,11 @@
 					$(document).ready(function(){
 						$("#skill-holder").on("change",":text", function(){
 							var xTr = $(this).parent().parent();
-							var xSinit = xTr.find($(".skill-init"));
-							var xSprof = xTr.find($(".skill-occu"));
-							var xSinte = xTr.find($(".skill-inte"));
-							var xSmodi = xTr.find($(".skill-modi"));				
-							var num1 = xSinit.val()
-							var num2 = xSprof.val()
-							var num3 = xSinte.val()
-							var num4 = xSmodi.val()
-							var sum = (num1-0) + (num2-0) + (num3-0) + (num4-0) 
+							var num1 = xTr.find($(".skill-init")).val();
+							var num2 = xTr.find($(".skill-occu")).val();
+							var num3 = xTr.find($(".skill-inte")).val();
+							var num4 = xTr.find($(".skill-modi")).val();
+							var sum = (num1-0) + (num2-0) + (num3-0) + (num4-0); 
 							// 错误判断部分
 							if (num1<0 || num2<0 || num3<0 || isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4)) {
 								$(this).css("background-color","pink");
@@ -581,7 +583,7 @@
 							}
 							xTr.find($(".skill-final")).text(sum); 
 							xTr.find($(".skill-hard")).text(parseInt(sum/2)); 
-							xTr.next().find($(".skill-crit")).text(parseInt(sum/4)); 
+							xTr.next().find($(".skill-crit")).text(parseInt(sum/5)); 
 						})
 					})
 				</script>
@@ -806,3 +808,10 @@
 
     </body>
 </html>
+
+<!-- 
+	reference: 
+	1. L.L.冷岚
+	2. Yoko 佑子
+	3. 苹果园 秋叶EXODUS 大佬
+-->
