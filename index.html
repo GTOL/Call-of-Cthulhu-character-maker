@@ -4,6 +4,7 @@
         <title>GT's CoC Character Maker</title>
         <meta charset="utf-8">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+       			src="https://github.com/eligrey/FileSaver.js" 
   				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   				crossorigin="anonymous"></script>
 
@@ -58,10 +59,6 @@
             	width: 118px;
             	height: 228px;
             	float: left;
-            }
-            .stat-holder input[type=text] {
-            	width: 24px;
-            	text-align: center;
             }
             .stat-holder p {
             	height: 15px;
@@ -250,6 +247,10 @@
 			    text-decoration: none;
 			    padding:15px 30px 15px 30px;
 			}
+			.box {
+	 		border: 1px solid #5A5AAD;
+	 		resize: none
+	 		}
         </style>
     </head>
 
@@ -285,7 +286,7 @@
 				<!-- 包含 hp mp san luck mov 受伤 疯狂 -->
 				<!-- 另开一个战斗：闪避 db build -->
 				<!-- 战斗放在武器速查旁边 -->
-				<div class="holder stat-holder">
+				<div class="holder" id="stat-holder">
 					<p >HP: &ensp;<input type="text" id="current-hp" name="current-hp" maxlength="2"></input> / <span id="max-hp">00</span></p>
 					<p >MP: &ensp;<input type="text" id="current-mp" name="current-mp" maxlength="2"></input> / <span id="max-mp">00</span></p>
 					<p >San:&ensp; <input type="text" id="current-san" name="current-san" maxlength="2"></input> / <span id="max-san">00</span></p>
@@ -299,7 +300,7 @@
 						<input type="file" accept="image/*" name="photo">
 					</div>
 				</div>
-				<div class="holder stat-holder">
+				<div class="holder" id="health-holder">
 					<p>健康状态：<select name="healthy-stat">
 						<option value="healthy">健康</option>
 						<option value="major-wound">重伤</option>
@@ -878,7 +879,115 @@
 			<!--返回顶部的top按钮-->
 			<a href="javascript:scroll(0,0)">
 			<div class="icon" id="back-to-top" style="width: 48px;height: 48px; float:left">
-			</div>
+			</div></a>
+
+
+			<!-- 导入导出功能 -->
+			<!-- 数据储存框 -->
+			<textarea class="box" id="dataPool" rows="10" cols="100" placeholder="这里会输出本页数据"></textarea>
+			<button id = "getdata" onclick="printdata()">导出</button>
+			<button id = "importdata" onclick="inputdata()">导入</button>
+			<button onclick="copy()">复制结果</button> <br>
+			<script type="text/javascript">
+			function printdata(){
+				//先清空datapool里的内容
+				$("#dataPool").text("")
+				// 基本资料
+				$("#dataPool").append("基本资料：");
+				$("#info-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				// 状态栏（HP等）
+				$("#dataPool").append("状态数值：");
+				$("#stat-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				// 属性栏（力量等）
+				$("#dataPool").append("属性栏：");
+				$("#attr-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				// 技能栏（力量等）
+				$("#dataPool").append("技能栏：");
+				$("#skill-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				// 装备与持有物
+				$("#dataPool").append("装备与持有物：");
+				$("#gear-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				// 武器
+				$("#dataPool").append("武器：");
+				$("#weapon-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				// 调查员资料
+				$("#dataPool").append("调查员资料：");
+				$("#back-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				//现金与资产
+				$("#dataPool").append("现金与资产：");
+				$("#possessions-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|分割线|");
+				//人际关系
+				$("#dataPool").append("人际关系：");
+				$("#relation-holder input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|以上是input|");
+				//check值
+				$("#dataPool").append("check值：");
+				$("input[type='text']").each(function(){
+					var xdata = $(this).val();
+					$("#dataPool").append("["+ xdata +"],");
+ 				 });
+				$("#dataPool").append("|以上是check值|");
+
+			}
+			//输入数据功能：思路：提取textarea里的值，然后提取某特定字符（如"人际关系")，然后遍历每一个“[]，”中的文字，按顺序填入（提示玩家不能在文本框中自己输入[]）
+			// function printdata(){
+
+			// }
+
+
+
+
+			function copy(){
+			    var target=document.getElementById("dataPool");
+			    target.select(); // 选择文本
+			    document.execCommand("Copy"); // 执行浏览器复制命令
+			    alert("复制好辣！");
+			}
+
+
+
+
+
+
+			</script>
+
+
+
 
 		</div>
 
