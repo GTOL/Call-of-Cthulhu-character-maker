@@ -85,15 +85,12 @@
             }
             #attr-holder td{
             	height: 18px;
-            	width: 60px;
+            	width: 65px;
             	padding: 0;
 /*            	text-align: center;*/
             }
             #attr-holder td.attr-final {
             	font-size: 22px;
-            }
-            .smaller-holder {
-            	font-size: 12px;
             }
             #attr-holder input[type=text] {
             	border: none;
@@ -178,6 +175,9 @@
             	width: 178px;
             	height: 228px;
             }
+
+
+
             #relation-holder input[type=text] {
             	font-size: 14px;
             	border: none;
@@ -240,47 +240,7 @@
 			    text-decoration: none;
 			    padding:15px 30px 15px 30px;
 			}
-			.phcolor{ 
-				color:#999;
-			}
         </style>
-        <!-- 使IE浏览器支持placeholder（通过把PH变成有有焦点时的灰色字） -->
-        <script type="text/javascript">
-        $(function(){  
-			  //判断浏览器是否支持placeholder属性
-			  supportPlaceholder='placeholder'in document.createElement('input'),
-			  placeholder=function(input){
-			    var text = input.attr('placeholder'),
-			    defaultValue = input.defaultValue;
-			    if(!defaultValue){
-			      input.val(text).addClass("phcolor");
-			    }
-			    input.focus(function(){
-			      if(input.val() == text){ 
-			        $(this).val("");
-			      }
-			    }); 
-			    input.blur(function(){
-			      if(input.val() == ""){      
-			        $(this).val(text).addClass("phcolor");
-			      }
-			    });
-			    //输入的字符不为灰色
-			    input.keydown(function(){
-			      $(this).removeClass("phcolor");
-			    });
-			  };
-			  //当浏览器不支持placeholder属性时，调用placeholder函数
-			  if(!supportPlaceholder){
-			    $('input').each(function(){
-			      text = $(this).attr("placeholder");
-			      if($(this).attr("type") == "text"){
-			        placeholder($(this));
-			      }
-			    });
-			  }
-			});
-        </script>
     </head>
 
 
@@ -316,13 +276,12 @@
 				<!-- 另开一个战斗：闪避 db build -->
 				<!-- 战斗放在武器速查旁边 -->
 				<div class="holder stat-holder">
-					<p >HP: <input type="text" id="current-hp" name="current-hp" maxlength="2"></input> / <span id="max-hp">00</span></p>
-					<p >MP: <input type="text" id="current-mp" name="current-mp" maxlength="2"></input> / <span id="max-mp">00</span></p>
-					<p >San: <input type="text" id="current-san" name="current-san" maxlength="2"></input> / <span id="max-san">00</span></p>
-					<p >Luck: <input type="text" name="current-luck" maxlength="2"></input> / <input type="text" name="max-luck" maxlength="2"></p>
+					<p id="max-hp">HP: <input type="text" name="current-hp" maxlength="2"> / 00</p>
+					<p id="max-mp">MP: <input type="text" name="current-mp" maxlength="2"> / 00</p>
+					<p id="max-san">San: <input type="text" name="current-san" maxlength="2"> / 00</p>
+					<p id="max-luck">Luck: <input type="text" name="current-luck" maxlength="2"> / 00</p>
 					<p>神话相信者<input type="checkbox" name="believer"></p>
 				</div>
-
 				<div class="holder" id="photo-holder">	
 					<div style="text-align: center;">
 						<img style="max-width: 95%; max-height: 170px;  height: auto;" src="ddwe.bmp" >
@@ -378,15 +337,15 @@
 						xTr.find($(".attr-hard")).text(parseInt(sum/2)); 
 						xTr.next().find($(".attr-crit")).text(parseInt(sum/5)); 
 						movCalcu();
-						maxHPetcCalcu();
 					})
 				})
 
-				// 把attr-holder的placeholder变小
+				// 力量对应：伤害加成，体格
 				$(document).ready(function(){
-					$("div#attr-holder").find($("input")).attr('placeholder'),
-			    var text = input.attr('placeholder'),
-			      input.val(text).addClass("smaller-holder");
+					// $("input[name*='str']").change(function(){
+					// 	var str = $("input[name*='str']").val();
+					// 	var 
+					// })	
 				})
 				//机动力/移动速度MOV：由STR,DEX,SIZ决定：
 				//MOV受年龄影响：年龄越大，MOV越小
@@ -417,26 +376,7 @@
 						}
 					}
 					$("span#mov").text(mov)		
-				}    
-
-					// HP MP SAN LUCK最大值的自动获取
-					function maxHPetcCalcu(){
-						var con = $("#con-final").text();
-						var siz = $("#siz-final").text();
-						var pow = $("#pow-final").text();
-						var maxHP = parseInt((con+siz)/10);
-						var maxMP = parseInt(pow/5);
-						var maxSAN = parseInt(99-$("#skill-t10r1d5").text());
-						var initSan = parseInt(pow);
-						$("#max-hp").text(maxHP);
-						$("#max-mp").text(maxMP);
-						$("#max-san").text(maxSAN);
-						$("#current-hp").attr("placeholder",maxHP);
-						$("#current-mp").attr("placeholder",maxMP);
-						$("#current-san").attr("placeholder",initSan);
-					}
-
-
+				}       
 
 
 			</script>
@@ -452,58 +392,58 @@
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">力量<br>STR</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="str" placeholder="3d6*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="str" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="str-modi"></td>
 						<td rowspan="2" id="str-final" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">敏捷<br>DEX</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="dex" placeholder="3d6*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="dex" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="dex-modi"></td>
 						<td rowspan="2" id="dex-final" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">智力<br>INT</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="int" placeholder="(2d6+6)*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="int" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="int-modi"></td>
-						<td rowspan="2" id="int-final" class="attr-final">0</td>
+						<td rowspan="2" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">体质<br>CON</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="con" placeholder="3d6*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="con" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="con-modi"></td>
-						<td rowspan="2" id="con-final" class="attr-final">0</td>
+						<td rowspan="2" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">外貌<br>APP</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="app" placeholder="3d6*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="app" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="app-modi"></td>
-						<td rowspan="2"  id="app-final" class="attr-final">0</td>
+						<td rowspan="2" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">意志<br>POW</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="pow" placeholder="3d6*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="pow" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="pow-modi"></td>
-						<td rowspan="2"  id="pow-final" class="attr-final">0</td>
+						<td rowspan="2" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">体型<br>SIZ</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="siz" placeholder="(2d6+6)*5" maxlength="2"></td>
-						<td rowspan="2"><input type="text" class="attr-modi" name="siz-modi"></td>
+						<td rowspan="2" style="font-size: 22px;">num</td>
+						<td rowspan="2"><input type="text" name="siz-modi"></td>
 						<td rowspan="2" id="siz-final" class="attr-final">0</td>
-						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
+						<td>00</td></tr><tr><td>00</td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="border: none;">教育<br>EDU</td>
-						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="edu" placeholder="(2d6+6)*5" maxlength="2"></td>
+						<td rowspan="2"><input type="text" class="attr-init" name="edu" placeholder="00" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="edu-modi"></td>
-						<td rowspan="2" id="edu-final" class="attr-final">0</td>
+						<td rowspan="2" class="attr-final">0</td>
 						<td class="attr-hard">00</td></tr><tr><td class="attr-crit">00</td>
 					</tr>
 				</table>
