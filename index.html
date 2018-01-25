@@ -347,7 +347,7 @@
 				//	体型不能小于1，外貌教育不能超过99
 				// 年龄change的时候先执行movcalu
 				$(document).ready(function(){
-					$("input[name='age']") .change(function(){
+					$("input[name='age']").change(function(){
 						movCalcu();
 					})
 					$("#attr-holder :text").change(function(){
@@ -378,6 +378,7 @@
 						movCalcu();
 						HPMPSanCalc();
 						dbBuildCalc();
+						skillpointsCalcu();
 					})
 				})
 
@@ -455,8 +456,17 @@
 					$("#db").text(db);
 					$("#build").text(build);
 				}
-
-
+				//职业点数和兴趣点数的计算
+				function skillpointsCalcu(){
+					//职业点数计算
+					//同时受edu和职业类型的影响。用select来选。
+					//提供7种范例和一个自定义（自定义就自己算），把最终值改成Input
+					var edu = $("#edu-final").text();
+					$("#max-propoints").text(edu);
+					//兴趣点数计算
+					var int = $("#int-final").text();
+					$("#max-intepoints").text(2*int);
+				}
 			</script>
 			<h2>调查员属性</h2>
 			<p>
@@ -517,11 +527,11 @@
 						<td rowspan="2" id="siz-final" class="attr-final">0</td>
 						<td class="attr-hard">0</td></tr><tr><td class="attr-crit">0</td>
 					</tr>
-					<tr>
+					<tr id="tr-edu">
 						<td rowspan="2" style="border: none;">教育<br>EDU</td>
 						<td rowspan="2" class="attr-init-td"><input type="text" class="attr-init" name="edu" maxlength="2"></td>
 						<td rowspan="2"><input type="text" class="attr-modi" name="edu-modi"></td>
-						<td rowspan="2" id="edu-final" class="attr-final">0</td>
+						<td rowspan="2" id="edu-final" type="text" class="attr-final">0</td>
 						<td class="attr-hard">0</td></tr><tr><td class="attr-crit">0</td>
 					</tr>
 				</table>
@@ -536,10 +546,16 @@
 
 				<!-- 放到同一行 -->
 				<!-- 技能input默认值和输入值高度不同 -->
-				<p>职业点数：<span>00</span> / <span>00</span></p>
-				<p>兴趣点数：<span>00</span> / <span>00</span></p>
+				<p>职业点数：<span>00</span> / <span id="max-propoints">00</span></p>
+				<p>兴趣点数：<span>00</span> / <span id="max-intepoints">00</span></p>
 
-				<script src="skills.js"></script>
+				<script src="skills.js">
+
+				</script>
+
+
+
+
 				<script>
 					var skills = [
 						[0,	"艺术与手艺(05%)", 		00],
@@ -916,7 +932,8 @@
 				<textarea class="box" id="dataPool" rows="10" cols="120" placeholder="这里会输出本页数据"></textarea><br>
 				<button id = "getdata" onclick="printdata()">导出</button>
 				<button id = "importdata" onclick="inputdata()">导入</button>
-				<button onclick="copy()">复制结果</button> <br>
+				<button onclick="copy()">复制结果</button>
+				cookie储存不可靠，请自己主动保存结果至本地<br>
 				<script type="text/javascript">
 				function printdata(){
 					//先清空datapool里的内容
