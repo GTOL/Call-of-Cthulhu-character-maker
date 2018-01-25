@@ -24,10 +24,13 @@
             }
             .holder {
                 border: 1px solid #666;
-                background-color: ; 
+                background-color: #F0F8FF; 
                 padding: 10px;
                 position: relative;
                 width: 428px;
+            }
+            .holder input{
+                background-color: #F0F8FF; 
             }
             #info-holder {
                 height: 228px;
@@ -55,18 +58,29 @@
 				flex-direction: column;
 
             }
-            .stat-holder {
+            #stat-holder {
             	width: 118px;
             	height: 228px;
             	float: left;
             }
-            .stat-holder p {
+            #stat-holder p {
             	height: 15px;
             }
-            .stat-holder input[type=checkbox] {
+            #stat-holder input[type=checkbox] {
             	float: right;
             }
-
+            #stat-holder input[type=text] {
+            	width: 25px;
+            	font-size: 16px;
+            }
+            #health-holder input[type=checkbox] {
+            	float: right;
+            }
+            #health-holder {
+            	float: left;
+            	width: 118px;
+            	height: 228px;
+            }
             #attr-holder {
             	height: 478px;
             	float: left;
@@ -90,8 +104,8 @@
             	font-size: 22px;
             }
 /*            .smaller-holder {
-            	font-size: 12px;*/
-            }
+            	font-size: 12px;
+            }*/
             #attr-holder input[type=text] {
             	border: none;
             	width: 65px;
@@ -102,7 +116,6 @@
             #skill-holder {
             	float: left;
             	height: 478px;
-            	background-color: yellow;
             }
             #skill-holder select {
             	width: 318px;
@@ -178,20 +191,29 @@
             	height: 228px;
             }
             #possessions-holder {
-            	height: 400px;
-            	float: left;
+            	height: 350px;
+            	width: 456px;
+	           	float: left;
             }
             #relation-holder {
-            	height: 400px;
+            	height: 368px;
+            	width: 456px;
             	float:left;
             }
             #relation-holder input[type=text] {
             	font-size: 14px;
             	border: none;
-            	width: 150px;
+            	width: 130px;
             	height: 100%;
             	text-align: center;
             }
+            #data-holder {
+            	height: 250px;
+            	width: 880px;
+            	float:left;
+            }
+
+
             #back-to-top {
             	/*background-image: url(ddwe.bmp);*/
             	background-color: red;
@@ -199,7 +221,7 @@
             	background-repeat: no-repeat;
             }
 
-        /*最上方导航条的CSS*/
+      		  /*最上方导航条的CSS*/
 
 			.topbody{
 			    width:900px;
@@ -263,7 +285,7 @@
 		        <li><a href="">▽人物卡</a></li>
 		        <li><a href="">▽帮助速查</a></li>
 		        <li><a href="">▽笔记本</a></li>
-		        <li><a href="">▽项目4</a></li>
+		        <li><a href="">▽【开启注释】</a></li>
 		    </ul>
 		    </div>
 		</div>
@@ -287,10 +309,11 @@
 				<!-- 另开一个战斗：闪避 db build -->
 				<!-- 战斗放在武器速查旁边 -->
 				<div class="holder" id="stat-holder">
+					<br>
 					<p >HP: &ensp;<input type="text" id="current-hp" name="current-hp" maxlength="2"></input> / <span id="max-hp">00</span></p>
 					<p >MP: &ensp;<input type="text" id="current-mp" name="current-mp" maxlength="2"></input> / <span id="max-mp">00</span></p>
 					<p >San:&ensp; <input type="text" id="current-san" name="current-san" maxlength="2"></input> / <span id="max-san">00</span></p>
-					<p >Luck: <input type="text" name="current-luck" maxlength="2"></input> / <input type="text" name="max-luck" maxlength="2"></p>
+					<p >Luck: <input type="text" name="current-luck" maxlength="2"></input> / <input type="text" name="max-luck" maxlength="2"></p><br>
 					<p>神话相信者<input type="checkbox" name="believer"></p>
 				</div>
 
@@ -322,7 +345,11 @@
 			<script type="text/javascript">
 				//	行内的自动计算
 				//	体型不能小于1，外貌教育不能超过99
+				// 年龄change的时候先执行movcalu
 				$(document).ready(function(){
+					$("input[name='age']") .change(function(){
+						movCalcu();
+					})
 					$("#attr-holder :text").change(function(){
 						var xTr = $(this).parent().parent();
 						var num1 =xTr.find($(".attr-init")).val();
@@ -822,9 +849,9 @@
 					<option value="cash-unit-null"> </option>
 					</select><input type="text" name="cash" style="width:100px" ><br>
 		       		调查员生活水平：<br>
-		       		<textarea rows="3" cols="40" style="resize:none"></textarea><br>
+		       		<textarea rows="4" cols="60" style="resize:none"></textarea><br>
 		       		其他资产：<br>
-		       		<textarea rows="5" cols="40" style="resize:none"></textarea>
+		       		<textarea rows="8" cols="60" style="resize:none"></textarea>
 	       		</div>
 	   		</div>
 
@@ -884,108 +911,102 @@
 
 			<!-- 导入导出功能 -->
 			<!-- 数据储存框 -->
-			<textarea class="box" id="dataPool" rows="10" cols="100" placeholder="这里会输出本页数据"></textarea>
-			<button id = "getdata" onclick="printdata()">导出</button>
-			<button id = "importdata" onclick="inputdata()">导入</button>
-			<button onclick="copy()">复制结果</button> <br>
-			<script type="text/javascript">
-			function printdata(){
-				//先清空datapool里的内容
-				$("#dataPool").text("")
-				// 基本资料
-				$("#dataPool").append("基本资料：");
-				$("#info-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				// 状态栏（HP等）
-				$("#dataPool").append("状态数值：");
-				$("#stat-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				// 属性栏（力量等）
-				$("#dataPool").append("属性栏：");
-				$("#attr-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				// 技能栏（力量等）
-				$("#dataPool").append("技能栏：");
-				$("#skill-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				// 装备与持有物
-				$("#dataPool").append("装备与持有物：");
-				$("#gear-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				// 武器
-				$("#dataPool").append("武器：");
-				$("#weapon-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				// 调查员资料
-				$("#dataPool").append("调查员资料：");
-				$("#back-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				//现金与资产
-				$("#dataPool").append("现金与资产：");
-				$("#possessions-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|分割线|");
-				//人际关系
-				$("#dataPool").append("人际关系：");
-				$("#relation-holder input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|以上是input|");
-				//check值
-				$("#dataPool").append("check值：");
-				$("input[type='text']").each(function(){
-					var xdata = $(this).val();
-					$("#dataPool").append("["+ xdata +"],");
- 				 });
-				$("#dataPool").append("|以上是check值|");
+			<div class="holder" id="data-holder">
+				<h2 style="text-align: center">数据导出</h2>
+				<textarea class="box" id="dataPool" rows="10" cols="120" placeholder="这里会输出本页数据"></textarea><br>
+				<button id = "getdata" onclick="printdata()">导出</button>
+				<button id = "importdata" onclick="inputdata()">导入</button>
+				<button onclick="copy()">复制结果</button> <br>
+				<script type="text/javascript">
+				function printdata(){
+					//先清空datapool里的内容
+					$("#dataPool").text("")
+					// 基本资料
+					$("#dataPool").append("基本资料：");
+					$("#info-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					// 状态栏（HP等）
+					$("#dataPool").append("状态数值：");
+					$("#stat-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					// 属性栏（力量等）
+					$("#dataPool").append("属性栏：");
+					$("#attr-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					// 技能栏（力量等）
+					$("#dataPool").append("技能栏：");
+					$("#skill-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					// 装备与持有物
+					$("#dataPool").append("装备与持有物：");
+					$("#gear-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					// 武器
+					$("#dataPool").append("武器：");
+					$("#weapon-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					// 调查员资料
+					$("#dataPool").append("调查员资料：");
+					$("#back-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					//现金与资产
+					$("#dataPool").append("现金与资产：");
+					$("#possessions-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|分割线|");
+					//人际关系
+					$("#dataPool").append("人际关系：");
+					$("#relation-holder input[type='text']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|以上是input|");
+					//check值
+					$("#dataPool").append("check值：");
+					$("input[type='checkbox']").each(function(){
+						var xdata = $(this).val();
+						$("#dataPool").append("["+ xdata +"],");
+	 				 });
+					$("#dataPool").append("|以上是check值|");
 
-			}
-			//输入数据功能：思路：提取textarea里的值，然后提取某特定字符（如"人际关系")，然后遍历每一个“[]，”中的文字，按顺序填入（提示玩家不能在文本框中自己输入[]）
-			// function printdata(){
+				}
 
-			// }
+				//输入数据功能：思路：提取textarea里的值，然后提取某特定字符（如"人际关系")，然后遍历每一个“[]，”中的文字，按顺序填入（提示玩家不能在文本框中自己输入[]）
+				// function printdata(){
 
+				// }
 
-
-
-			function copy(){
-			    var target=document.getElementById("dataPool");
-			    target.select(); // 选择文本
-			    document.execCommand("Copy"); // 执行浏览器复制命令
-			    alert("复制好辣！");
-			}
-
-
-
-
-
-
-			</script>
-
+				function copy(){
+				    var target=document.getElementById("dataPool");
+				    target.select(); // 选择文本
+				    document.execCommand("Copy"); // 执行浏览器复制命令
+				    alert("复制好辣！");
+				}
+				</script>
+			</div>
 
 
 
