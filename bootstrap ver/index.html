@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<script>
+		<script type="text/javascript">
 			$("header").load("navbar.html", function() {
 				$("li#card").addClass("active");
 			});
@@ -20,8 +20,25 @@
 	</header>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 bg-primary">yay</div>
-			<div class="col-sm-6">aha</div>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-12 bg-white border rounded-top">asad</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 bg-white border border-top-0 rounded-bottom">
+						<div class="row">								
+							<div class="col-4 bg-white rounded-left">aha</div>
+							<div class="col-4 border-left border-right bg-white">aha</div>
+							<div class="col-4 bg-white rounded-right">aha</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 bg-primary border rounded">aha</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 bg-light border rounded">yay</div>
+			<div class="col-sm-6 bg-light border rounded">aha</div>
 		</div>
 	</div>
 </body>
