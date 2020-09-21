@@ -17,91 +17,128 @@
 			});
 		</script>
 	</header>
-	<main class="container-md">
+	<main class="container-lg">
 		<div class="row row-cols-1 row-cols-sm-2">
 			<div class="col bg-light border rounded p-1">
+				<!-- 基础资料 -->
 				<div class="input-group mb-1">
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="letter-spacing: 1em; margin-right: -1em">姓名</span>
 					</div>
-					<input type="text" class="form-control" placeholder="李小花" aria-label="输入姓名">
+					<input type="text" class="form-control" placeholder="蝙蝠侠" aria-label="输入姓名">
 				</div>
 				<div class="input-group mb-1">
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="letter-spacing: 1em; margin-right: -1em">玩家</span>
 					</div>
-					<input type="text" class="form-control" placeholder="克里斯" aria-label="输入玩家">
+					<input type="text" class="form-control" placeholder="布鲁斯·韦恩" aria-label="输入玩家">
 				</div>
 				<div class="input-group mb-1">
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="letter-spacing: 1em; margin-right: -1em">职业</span>
 					</div>
-					<input type="text" class="form-control" placeholder="教练" aria-label="输入职业">
+					<input type="text" class="form-control" placeholder="企业家" aria-label="输入职业">
 				</div>
 				<div class="form-row">
 					<div class="col input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="letter-spacing: 1em; margin-right: -1em">年龄</span>
 						</div>
-						<input type="text" class="form-control" placeholder="20" aria-label="输入年龄">
+						<input type="text" class="form-control" placeholder="48" aria-label="输入年龄">
 					</div>
 					<div class="col input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="letter-spacing: 1em; margin-right: -1em">性别</span>
 						</div>
-						<input type="text" class="form-control" placeholder="女" aria-label="输入性别">
+						<input type="text" class="form-control" placeholder="男" aria-label="输入性别">
 					</div>
 				</div>
 				<div class="input-group mb-1">
 					<div class="input-group-prepend">
 						<span class="input-group-text">出生地</span>
 					</div>
-					<input type="text" class="form-control" placeholder="" aria-label="输入出生地">
+					<input type="text" class="form-control" placeholder="哥谭市" aria-label="输入出生地">
 				</div>
 				<div class="input-group mb-1">
 					<div class="input-group-prepend">
 						<span class="input-group-text">现居地</span>
 					</div>
-					<input type="text" class="form-control" placeholder="" aria-label="输入现居地">
+					<input type="text" class="form-control" placeholder="哥谭市" aria-label="输入现居地">
 				</div>
+				<!-- 状态栏 -->
 				<div class="row mx-0 border rounded">
-					<div class="col-4 bg-light rounded-left">
+					<div class="col-4 bg-light rounded-left p-1">
 						HP:
-						<div class="input-group input-group-sm mb-1">
-							<input type="text" class="form-control" placeholder="" aria-label="HP">
+						<div class="input-group input-group-sm">
+							<input id="hp" type="text" class="form-control" placeholder="" aria-label="HP">
 							<div class="input-group-append">
 								<span class="input-group-text">/ 00</span>
 							</div>
 						</div>
 						MP:
-						<div class="input-group input-group-sm mb-1">
+						<div class="input-group input-group-sm">
 							<input type="text" class="form-control" placeholder="" aria-label="MP">
 							<div class="input-group-append">
 								<span class="input-group-text">/ 00</span>
 							</div>
 						</div>
 						Sanity:
-						<div class="input-group input-group-sm mb-1">
+						<div class="input-group input-group-sm">
 							<input type="text" class="form-control" placeholder="" aria-label="理智值">
 							<div class="input-group-append">
 								<span class="input-group-text">/ 00</span>
 							</div>
 						</div>
 						Luck:
-						<div class="input-group input-group-sm mb-1">
+						<div class="input-group input-group-sm">
 							<input type="text" class="form-control" placeholder="" aria-label="Luck">
-							<div class="input-group-append">
+							<div class="input-group-prepend input-group-append">
 								<span class="input-group-text">/</span>
 							</div>
 							<input type="text" class="form-control" placeholder="" aria-label="Luck">
 						</div>
-						<p>神话相信者<input type="checkbox" name="believer"></p>
+						<div class="form-check mt-1">
+							<input class="form-check-input" type="checkbox" id="believer">
+							<label class="form-check-label" for="believer">神话相信者</label>
+						</div>
 					</div>
-					<div class="col-5 border-left border-right">aha</div>
-					<div class="col-3 rounded-right">aha</div>
+					<div class="col-4 border-left border-right p-1">
+						<img class="img-thumbnail mx-auto d-block my-1" src="ddwe.bmp" alt="调查员形象" style="max-height: 170px;  height: auto;">
+						<label class="btn btn-secondary btn-block">
+							选择图像
+							<input type="file" hidden>
+						</label>
+					</div>
+					<div class="col-4 rounded-right p-1">
+						健康状态：
+						<div class="input-group">
+							<select class="custom-select" id="inputGroupSelect01">
+								<option value="0" selected>健康</option>
+								<option value="1">重伤</option>
+								<option value="2">濒死</option>
+								<option value="3">昏迷</option>
+							</select>
+						</div>
+						<div class="form-check mt-1">
+							<input class="form-check-input" type="checkbox" id="tempInsane">
+							<label class="form-check-label" for="tempInsane">临时疯狂</label>
+						</div>
+						<div class="form-check mt-1">
+							<input class="form-check-input" type="checkbox" id="indefInsane">
+							<label class="form-check-label" for="indefInsane">不定期疯狂</label>
+						</div>
+						<div class="form-check mt-1">
+							<input class="form-check-input" type="checkbox" id="insane">
+							<label class="form-check-label" for="insane">永久疯狂</label>
+						</div>
+						<span class="position-absolute fixed-bottom p-1">机动力(MOV)：<span id="mov">0</span></span>
+					</div>
 				</div>
 			</div>
-			<div class="col bg-light border rounded">aha</div>
+			<!-- 属性栏 -->
+			<div class="col bg-light border rounded">
+				<h3 class="text-center">调查员属性</h3>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col bg-light border rounded">
