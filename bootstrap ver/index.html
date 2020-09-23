@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-	<title>CoC Character Maker</title>
+	<title>CoC在线角色卡</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
@@ -22,141 +22,142 @@
 		}
 	</style>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
-		<script type="text/javascript">
-			$("header").load("navbar.html", function() {
-				$("li#card").addClass("active");
-			});
-		</script>
 	</header>
 	<main class="container-lg mt-4">
 		<div class="row row-cols-1 row-cols-sm-2">
 			<div class="col p-1">
-				<!-- 基础资料/状态栏 -->
+				<!-- 基础资料 / Basic -->
 				<div class="bg-light border rounded p-2 h-100">
+					<h3 class="text-center">基本资料</h3>
+					<div class="position-absolute fixed-top custom-control custom-checkbox m-3">
+						<input id="lock-basic" class="custom-control-input" type="checkbox">
+						<label for="lock-basic" class="custom-control-label">锁定</label>
+					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text wide-spacing">姓名</span>
 						</div>
-						<input type="text" class="form-control" placeholder="蝙蝠侠" aria-label="输入姓名">
+						<input id="name" type="text" class="form-control" placeholder="蝙蝠侠" aria-label="输入姓名">
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text wide-spacing">玩家</span>
 						</div>
-						<input type="text" class="form-control" placeholder="布鲁斯·韦恩" aria-label="输入玩家">
+						<input id="player" type="text" class="form-control" placeholder="布鲁斯·韦恩" aria-label="输入玩家">
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text wide-spacing">职业</span>
 						</div>
-						<input type="text" class="form-control" placeholder="企业家" aria-label="输入职业">
+						<input id="occupation" type="text" class="form-control" placeholder="企业家" aria-label="输入职业">
 					</div>
 					<div class="form-row">
 						<div class="col input-group mb-1">
 							<div class="input-group-prepend">
 								<span class="input-group-text wide-spacing">年龄</span>
 							</div>
-							<input type="text" class="form-control" placeholder="48" aria-label="输入年龄">
+							<input id="age" type="text" class="form-control" placeholder="48" aria-label="输入年龄">
 						</div>
 						<div class="col input-group mb-1">
 							<div class="input-group-prepend">
 								<span class="input-group-text wide-spacing">性别</span>
 							</div>
-							<input type="text" class="form-control" placeholder="男" aria-label="输入性别">
+							<input id="sex" type="text" class="form-control" placeholder="男" aria-label="输入性别">
 						</div>
-					</div>
-					<div class="input-group mb-1">
-						<div class="input-group-prepend">
-							<span class="input-group-text">出生地</span>
-						</div>
-						<input type="text" class="form-control" placeholder="哥谭市" aria-label="输入出生地">
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text">现居地</span>
 						</div>
-						<input type="text" class="form-control" placeholder="哥谭市" aria-label="输入现居地">
+						<input id="residence" type="text" class="form-control" placeholder="哥谭市" aria-label="输入出生地">
+					</div>
+					<div class="input-group mb-1">
+						<div class="input-group-prepend">
+							<span class="input-group-text">出生地</span>
+						</div>
+						<input id="birthplace" type="text" class="form-control" placeholder="哥谭市" aria-label="输入现居地">
 					</div>
 					<div class="row mx-0 border rounded bg-light text-dark">
 						<div class="col rounded-left p-1">
-							HP:
+							<span>HP:</span>
 							<div class="input-group input-group-sm">
 								<input id="hp" type="number" class="form-control" placeholder="" aria-label="HP">
 								<div class="input-group-append">
-									<span class="input-group-text">/ 00</span>
+									<span id="hp-max" class="input-group-text">/ 00</span>
 								</div>
 							</div>
 							MP:
 							<div class="input-group input-group-sm">
-								<input type="number" class="form-control" placeholder="" aria-label="MP">
+								<input id="mp" type="number" class="form-control" placeholder="" aria-label="MP">
 								<div class="input-group-append">
-									<span class="input-group-text">/ 00</span>
+									<span id="mp-max" class="input-group-text">/ 00</span>
 								</div>
 							</div>
 							Sanity:
 							<div class="input-group input-group-sm">
-								<input type="number" class="form-control" placeholder="" aria-label="理智值">
+								<input id="san" type="number" class="form-control" placeholder="" aria-label="理智值">
 								<div class="input-group-append">
-									<span class="input-group-text">/ 00</span>
+									<span id="san-max" class="input-group-text">/ 99</span>
 								</div>
 							</div>
 							Luck:
 							<div class="input-group input-group-sm">
-								<input type="number" class="form-control" placeholder="" aria-label="Luck">
+								<input id="lck" class="form-control" type="number" placeholder="" aria-label="Luck">
 								<div class="input-group-prepend input-group-append">
 									<span class="input-group-text">/</span>
 								</div>
-								<input type="number" class="form-control" placeholder="" aria-label="Luck">
-							</div>
-							<div class="form-check mt-1">
-								<input class="form-check-input" type="checkbox" id="believer">
-								<label class="form-check-label" for="believer">神话相信者</label>
+								<input id="lck-max" class="form-control" type="number" placeholder="" aria-label="Luck">
 							</div>
 						</div>
 						<div class="col-5 border-left border-right text-center p-1">
-							<img class="img-thumbnail mx-auto d-block my-1" src="ddwe.bmp" alt="调查员形象" style="max-height: 170px;  height: auto;">
-							<label class="btn btn-secondary my-1">
-								选择图像
-								<input type="file" hidden>
-							</label>
+							<img id="img" class="img-thumbnail mx-auto d-block my-1" src="ddwe.bmp" alt="调查员形象" style="max-height: 170px;  height: auto;">
+							<label for="upload-img" class="btn btn-secondary my-1">选择图像</label>
+							<input id="upload-img" type="file" hidden>
 						</div>
 						<div class="col rounded-right p-1">
 							健康状态：
 							<div class="input-group">
-								<select class="custom-select" id="inputGroupSelect01">
+								<select id="health-status" class="custom-select">
 									<option value="0" selected>健康</option>
 									<option value="1">重伤</option>
 									<option value="2">濒死</option>
 									<option value="3">昏迷</option>
 								</select>
 							</div>
-							<div class="form-check mt-1">
-								<input class="form-check-input" type="checkbox" id="tempInsane">
-								<label class="form-check-label" for="tempInsane">临时疯狂</label>
+							<div class="custom-control custom-checkbox mt-1">
+								<input id="believer" class="custom-control-input" type="checkbox">
+								<label for="believer" class="custom-control-label">神话相信者</label>
 							</div>
-							<div class="form-check mt-1">
-								<input class="form-check-input" type="checkbox" id="indefInsane">
-								<label class="form-check-label" for="indefInsane">不定期疯狂</label>
+							<div class="custom-control custom-checkbox mt-1">
+								<input id="temp-insane" class="custom-control-input" type="checkbox">
+								<label for="temp-insane" class="custom-control-label">临时疯狂</label>
 							</div>
-							<div class="form-check mt-1">
-								<input class="form-check-input" type="checkbox" id="insane">
-								<label class="form-check-label" for="insane">永久疯狂</label>
+							<div class="custom-control custom-checkbox mt-1">
+								<input id="indef-insane" class="custom-control-input" type="checkbox">
+								<label for="indef-insane" class="custom-control-label">不定期疯狂</label>
 							</div>
-							<span class="position-absolute fixed-bottom p-1">机动力(MOV)：<span id="mov">0</span></span>
+							<div class="custom-control custom-checkbox mt-1">
+								<input id="insane" class="custom-control-input" type="checkbox">
+								<label for="insane" class="custom-control-label">永久疯狂</label>
+							</div>
+							<div class="position-absolute fixed-bottom p-1">
+								机动力/MOV：<span id="mov">0</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col p-1">
-				<!-- 属性栏 -->
+				<!-- 属性 / Characteristic -->
 				<div class="bg-light border rounded p-2 h-100">
 					<h3 class="text-center">调查员属性</h3>
+					<div class="position-absolute fixed-top custom-control custom-checkbox m-3">
+						<input class="custom-control-input" type="checkbox" id="lock-charc">
+						<label class="custom-control-label" for="lock-charc">锁定</label>
+					</div>
 					<table class="table table-bordered text-center">
 						<thead class="bg-gray">
 							<tr>
@@ -174,137 +175,151 @@
 							<tr>
 								<td rowspan="2">力量<br>STR</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="str" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="str-adj"type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="str-fin" rowspan="2">0</td>
+								<td id="str-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="str-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">敏捷<br>DEX</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="dex" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="dex-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="dex-fin" rowspan="2">0</td>
+								<td id="dex-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="dex-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">智力<br>INT</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="int" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="int-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="int-fin" rowspan="2">0</td>
+								<td id="int-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="int-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">体质<br>CON</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="con" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="con-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="con-fin" rowspan="2">0</td>
+								<td id="con-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="con-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">外貌<br>APP</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="app" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="app-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="app-fin" rowspan="2">0</td>
+								<td id="app-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="app-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">意志<br>POW</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="pow" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="pow-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="pow-fin" rowspan="2">0</td>
+								<td id="pow-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="pow-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">体型<br>SIZ</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="siz" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="siz-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="siz-fin" rowspan="2">0</td>
+								<td id="siz-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="siz-vhard">0</td>
 							</tr>
 							<tr>
 								<td rowspan="2">教育<br>EDU</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="edu" type="number" class="form-control" placeholder="00" maxlength="3">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="edu-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
 								</td>
-								<td rowspan="2">0</td>
-								<td>0</td>
+								<td id="edu-fin" rowspan="2">0</td>
+								<td id="edu-hard">0</td>
 							</tr>
 							<tr>
-								<td>0</td>
+								<td id="edu-vhard">0</td>
 							</tr>
 						</tbody>
 					</table>
-					<div class="form-check position-absolute fixed-top text-right p-3">
-						<input class="form-check-input" type="checkbox" id="age-adj">
-						<label class="form-check-label" for="age-adj">年龄调整</label>
+					<button id="random-charc-btn" class="btn btn-outline-primary" type="button">全部随机生成</button>
+					<button id="pow2san-btn" class="btn btn-outline-warning" type="button">意志->San</button>
+				</div>
+			</div>
+			<div class="col p-1">
+				<!-- 技能 / Skill -->
+				<div class="bg-light border rounded p-2 h-100">
+					<h3 class="text-center">调查员技能</h3>
+					<div class="position-absolute fixed-top custom-control custom-checkbox m-3">
+						<input class="custom-control-input" type="checkbox" id="lock-skill">
+						<label class="custom-control-label" for="lock-skill">锁定</label>
 					</div>
 				</div>
 			</div>
 			<div class="col p-1">
+				<!-- 装备 / Gear -->
 				<div class="bg-light border rounded p-2 h-100">
-					yay
+					<h3 class="text-center">装备与持有物</h3>
+					<div class="position-absolute fixed-top custom-control custom-checkbox m-3">
+						<input class="custom-control-input" type="checkbox" id="lock-gear">
+						<label class="custom-control-label" for="lock-gear">锁定</label>
+					</div>
 				</div>
 			</div>
-			<div class="col p-1">
-				<div class="bg-light border rounded p-2 h-100">
-					aha
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			
 		</div>
 	</main>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="js/full.js"></script>
+	<script type="text/javascript">
+		$("header").load("navbar.html", function() {
+			$("li#card").addClass("active");
+		});
+	</script>
 </body>
 </html>
