@@ -19,6 +19,7 @@ $(document).ready(function() {
 		$("#str-adj,#dex-adj,#int-adj,#con-adj,#app-adj,#pow-adj,#siz-adj,#edu-adj").prop("disabled", checked);
 		$("#random-charc-btn,#update-san-button").prop("disabled", checked);
 	});
+
 	// auto calc table
 	$("#str,#dex,#int,#con,#app,#pow,#siz,#edu,#str-adj,#dex-adj,#int-adj,#con-adj,#app-adj,#pow-adj,#siz-adj,#edu-adj").on("input", function() {
 		var charc = "#" + $(this).prop("id").substring(0,3);
@@ -44,6 +45,17 @@ $(document).ready(function() {
 	$("#pow-fin").change(calcMp);
 	// mov
 	$("#str-fin,#dex-fin,#siz-fin").change(calcMov);
+	// occupation skill points
+	$("#str-fin,#dex-fin,#pow-fin,#app-fin,#edu-fin").change(calcOsp);
+	// interest skill points
+	$("#int-fin").change(calcIsp);
+
+	//
+	// skill
+	//
+
+	// formula selection
+	$("#osp-formula").change(selectOspFormula);
 });
 
 
@@ -89,12 +101,60 @@ function calcMov() {
 	var age = Number($("#age").val());
 	var mov;
 	if (dex<siz && str<siz) {
-		mov = 7
+		mov = 7;
 	} else if(dex>siz && str>siz){
-		mov = 9
+		mov = 9;
 	} else{
-		mov = 8
+		mov = 8;
 	}
 	var adj = age < 40 ? "" : " - " + parseInt((age - 30) / 10);
 	$("#mov").text(mov + adj);
+}
+
+function selectOspFormula() {
+	var val = $("#osp-formula").val();
+	if (val == -1) {
+		$("#osp-max").prop("disabled", false);
+		$("#osp-max").removeClass("form-control-plaintext");
+		$("#osp-max").addClass("form-control");
+	} else {
+		$("#osp-max").prop("disabled", true);
+		$("#osp-max").removeClass("form-control");
+		$("#osp-max").addClass("form-control-plaintext");
+	}
+	calcOsp();
+}
+
+function calcOsp() {
+	var val = $("#osp-formula").val();
+	var edu = Number($("#edu-fin").text());
+	var str = Number($("#str-fin").text());
+	var dex = Number($("#dex-fin").text());
+	var pow = Number($("#pow-fin").text());
+	var app = Number($("#app-fin").text());
+	console.log(val);
+	switch (val) {
+		case "1":
+			$("#osp-max").val(edu * 4).trigger("change");
+			break;
+		case "2":
+			$("#osp-max").val(edu * 2 + str * 2).trigger("change");
+			break;
+		case "3":
+			$("#osp-max").val(edu * 2 + dex * 2).trigger("change");
+			break;
+		case "4":
+			$("#osp-max").val(edu * 2 + pow * 2).trigger("change");
+			break;
+		case "5":
+			$("#osp-max").val(edu * 2 + app * 2).trigger("change");
+			break;
+		default:
+			break;
+	}
+}
+
+function calcIsp() {
+	var int = Number($("#int-fin").text());
+	$("#isp-max").text(int * 2).trigger("change");
 }
