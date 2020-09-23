@@ -24,6 +24,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+	<!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+	<input type="text" id="name-fake-for-chrome" tabindex="-1" style="position: fixed;top:-100px;left:-100px; width:5px;">
 	<header>
 	</header>
 	<main class="container-lg mt-4">
@@ -40,82 +42,82 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text wide-spacing">姓名</span>
 						</div>
-						<input id="name" type="text" class="form-control" placeholder="蝙蝠侠" aria-label="输入姓名">
+						<input id="name" type="text" class="form-control" placeholder="蝙蝠侠" autocomplete="chrome-off" aria-label="输入姓名">
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text wide-spacing">玩家</span>
 						</div>
-						<input id="player" type="text" class="form-control" placeholder="布鲁斯·韦恩" aria-label="输入玩家">
+						<input id="player" type="text" class="form-control" placeholder="布鲁斯·韦恩" autocomplete="off" aria-label="输入玩家">
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text wide-spacing">职业</span>
 						</div>
-						<input id="occupation" type="text" class="form-control" placeholder="企业家" aria-label="输入职业">
+						<input id="occupation" type="text" class="form-control" placeholder="企业家"autocomplete="off"  aria-label="输入职业">
 					</div>
 					<div class="form-row">
 						<div class="col input-group mb-1">
 							<div class="input-group-prepend">
 								<span class="input-group-text wide-spacing">年龄</span>
 							</div>
-							<input id="age" type="text" class="form-control" placeholder="48" aria-label="输入年龄">
+							<input id="age" type="text" class="form-control" placeholder="48" autocomplete="off" aria-label="输入年龄">
 						</div>
 						<div class="col input-group mb-1">
 							<div class="input-group-prepend">
 								<span class="input-group-text wide-spacing">性别</span>
 							</div>
-							<input id="sex" type="text" class="form-control" placeholder="男" aria-label="输入性别">
+							<input id="sex" type="text" class="form-control" placeholder="男" autocomplete="off" aria-label="输入性别">
 						</div>
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text">现居地</span>
 						</div>
-						<input id="residence" type="text" class="form-control" placeholder="哥谭市" aria-label="输入出生地">
+						<input id="residence" type="text" class="form-control" placeholder="哥谭市" autocomplete="chrome-off" aria-label="输入出生地">
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
 							<span class="input-group-text">出生地</span>
 						</div>
-						<input id="birthplace" type="text" class="form-control" placeholder="哥谭市" aria-label="输入现居地">
+						<input id="birthplace" type="text" class="form-control" placeholder="哥谭市" autocomplete="chrome-off" aria-label="输入现居地">
 					</div>
 					<div class="row mx-0 border rounded bg-light text-dark">
 						<div class="col rounded-left p-1">
 							<span>HP:</span>
 							<div class="input-group input-group-sm">
-								<input id="hp" type="number" class="form-control" placeholder="" aria-label="HP">
+								<input id="hp" type="number" class="form-control" placeholder="" autocomplete="off" aria-label="HP">
 								<div class="input-group-append">
 									<span id="hp-max" class="input-group-text">/ 00</span>
 								</div>
 							</div>
 							MP:
 							<div class="input-group input-group-sm">
-								<input id="mp" type="number" class="form-control" placeholder="" aria-label="MP">
+								<input id="mp" type="number" class="form-control" placeholder="" autocomplete="off" aria-label="MP">
 								<div class="input-group-append">
 									<span id="mp-max" class="input-group-text">/ 00</span>
 								</div>
 							</div>
 							Sanity:
 							<div class="input-group input-group-sm">
-								<input id="san" type="number" class="form-control" placeholder="" aria-label="理智值">
+								<input id="san" type="number" class="form-control" placeholder="" autocomplete="off" aria-label="理智值">
 								<div class="input-group-append">
 									<span id="san-max" class="input-group-text">/ 99</span>
 								</div>
 							</div>
 							Luck:
 							<div class="input-group input-group-sm">
-								<input id="lck" class="form-control" type="number" placeholder="" aria-label="Luck">
+								<input id="lck" class="form-control" type="number" placeholder="" autocomplete="off" aria-label="Luck">
 								<div class="input-group-prepend input-group-append">
 									<span class="input-group-text">/</span>
 								</div>
-								<input id="lck-max" class="form-control" type="number" placeholder="" aria-label="Luck">
+								<input id="lck-max" class="form-control" type="number" placeholder="" autocomplete="off" aria-label="Luck">
 							</div>
 						</div>
 						<div class="col-5 border-left border-right text-center p-1">
 							<img id="img" class="img-thumbnail mx-auto d-block my-1" src="ddwe.bmp" alt="调查员形象" style="max-height: 170px;  height: auto;">
 							<label for="upload-img" class="btn btn-secondary my-1">选择图像</label>
-							<input id="upload-img" type="file" hidden>
+							<input id="upload-img" type="file" hidden autocomplete="off">
 						</div>
 						<div class="col rounded-right p-1">
 							健康状态：
@@ -175,10 +177,10 @@
 							<tr>
 								<td rowspan="2">力量<br>STR</td>
 								<td rowspan="2" class="w-20">
-									<input id="str" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="str" type="number" class="form-control" placeholder="00" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="str-adj"type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="str-adj"type="number" class="form-control" placeholder="±0" autocomplete="off">
 								</td>
 								<td id="str-fin" rowspan="2">0</td>
 								<td id="str-hard">0</td>
@@ -189,10 +191,10 @@
 							<tr>
 								<td rowspan="2">敏捷<br>DEX</td>
 								<td rowspan="2" class="w-20">
-									<input id="dex" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="dex" type="number" class="form-control" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="dex-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="dex-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="dex-fin" rowspan="2">0</td>
 								<td id="dex-hard">0</td>
@@ -203,10 +205,10 @@
 							<tr>
 								<td rowspan="2">智力<br>INT</td>
 								<td rowspan="2" class="w-20">
-									<input id="int" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="int" type="number" class="form-control" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="int-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="int-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="int-fin" rowspan="2">0</td>
 								<td id="int-hard">0</td>
@@ -217,10 +219,10 @@
 							<tr>
 								<td rowspan="2">体质<br>CON</td>
 								<td rowspan="2" class="w-20">
-									<input id="con" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="con" type="number" class="form-control" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="con-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="con-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="con-fin" rowspan="2">0</td>
 								<td id="con-hard">0</td>
@@ -231,10 +233,10 @@
 							<tr>
 								<td rowspan="2">外貌<br>APP</td>
 								<td rowspan="2" class="w-20">
-									<input id="app" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="app" type="number" class="form-control" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="app-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="app-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="app-fin" rowspan="2">0</td>
 								<td id="app-hard">0</td>
@@ -245,10 +247,10 @@
 							<tr>
 								<td rowspan="2">意志<br>POW</td>
 								<td rowspan="2" class="w-20">
-									<input id="pow" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="pow" type="number" class="form-control" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="pow-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="pow-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="pow-fin" rowspan="2">0</td>
 								<td id="pow-hard">0</td>
@@ -259,10 +261,10 @@
 							<tr>
 								<td rowspan="2">体型<br>SIZ</td>
 								<td rowspan="2" class="w-20">
-									<input id="siz" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="siz" type="number" class="form-control" min="1" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="siz-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="siz-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="siz-fin" rowspan="2">0</td>
 								<td id="siz-hard">0</td>
@@ -273,10 +275,10 @@
 							<tr>
 								<td rowspan="2">教育<br>EDU</td>
 								<td rowspan="2" class="w-20">
-									<input id="edu" type="number" class="form-control" placeholder="00" maxlength="3">	
+									<input id="edu" type="number" class="form-control" min="0" autocomplete="off">	
 								</td>
 								<td rowspan="2" class="w-20">
-									<input id="edu-adj" type="number" class="form-control" placeholder="±0" maxlength="3">
+									<input id="edu-adj" type="number" class="form-control" autocomplete="off">
 								</td>
 								<td id="edu-fin" rowspan="2">0</td>
 								<td id="edu-hard">0</td>
@@ -287,7 +289,7 @@
 						</tbody>
 					</table>
 					<button id="random-charc-btn" class="btn btn-outline-primary" type="button">全部随机生成</button>
-					<button id="pow2san-btn" class="btn btn-outline-warning" type="button">意志->San</button>
+					<button id="update-san-button" class="btn btn-outline-warning" type="button">更新San值</button>
 				</div>
 			</div>
 			<div class="col p-1">
