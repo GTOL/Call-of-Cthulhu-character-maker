@@ -8,6 +8,18 @@ $(document).ready(function() {
 		var checked = $(this).prop("checked");
 		$("#name,#player,#occupation,#age,#sex,#residence,#birthplace,#lck-max").prop("disabled", checked);
 	});
+
+	// image
+	$("#upload-img").change(function() {
+		var file = $(this).prop("files")[0];
+		var fr = new FileReader();
+		fr.onload = function() {
+			$("#img").prop("src", fr.result);
+		}
+		//fr.readAsBinaryString(file);
+		fr.readAsDataURL(file);
+	});
+
 	//
 	// characteristic
 	//
@@ -57,7 +69,6 @@ $(document).ready(function() {
 	// formula selection
 	$("#osp-formula").change(selectOspFormula);
 });
-
 
 function pad(number) {
   if (number<=99) { number = ("0"+number).slice(-2); }
@@ -132,7 +143,6 @@ function calcOsp() {
 	var dex = Number($("#dex-fin").text());
 	var pow = Number($("#pow-fin").text());
 	var app = Number($("#app-fin").text());
-	console.log(val);
 	switch (val) {
 		case "1":
 			$("#osp-max").val(edu * 4).trigger("change");
@@ -157,4 +167,8 @@ function calcOsp() {
 function calcIsp() {
 	var int = Number($("#int-fin").text());
 	$("#isp-max").text(int * 2).trigger("change");
+}
+
+function loadSkills(json) {
+
 }
